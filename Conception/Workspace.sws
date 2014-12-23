@@ -4,7 +4,8 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{1962C4D7-1437-48BF-96CB-2B254EA7AC21}" Name="P2P_files_sharing" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="../../P2P_files_sharing.oom"/>
+		<Model Expanded="Yes" ID="{1962C4D7-1437-48BF-96CB-2B254EA7AC21}" Loaded="No" Name="P2P_files_sharing" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="../../P2P_files_sharing.oom"/>
+		<Model Expanded="Yes" ID="{1962C4D7-1437-48BF-96CB-2B254EA7AC21}" Name="P2P_files_sharing" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="P2P_files_sharing.oom"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
