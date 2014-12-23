@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1419366377 source:e:\projetprogrammationip\programmationip\test\client\main.cpp
+	<winsock2.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdio.h>
+	<stdlib.h>
+
