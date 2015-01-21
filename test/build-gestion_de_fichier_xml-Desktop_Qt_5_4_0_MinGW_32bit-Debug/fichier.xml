@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<fichiers >
+    <fichier ID="1" Nom="fichier1">
+        <infos ID="Emplacement" Nom="emplacemen1"/>
+        <infos ID="Auteur" Nom="auteur1"/>
+        <infos ID="cree le" Nom="cree1"/>
+        <infos ID="modifier le" Nom="modifier1"/>
+        <infos ID="Taille" Nom="taille1"/>
+        <infos ID="Taille sur disque" Nom="tailledisque1"/>
+        <infos ID="Description" Nom="description1"/>
+    </fichier>
+    <fichier ID="2" Nom="fichier2">
+        <infos ID="Emplacement" Nom="emplacemen2"/>
+        <infos ID="Auteur" Nom="auteur2"/>
+        <infos ID="cree le" Nom="cree2"/>
+        <infos ID="modifier le" Nom="modifier2"/>
+        <infos ID="Taille" Nom="taille2"/>
+        <infos ID="Taille sur disque" Nom="tailledisque2"/>
+        <infos ID="Description" Nom="description2"/>
+    </fichier>
+    <fichier ID="3" Nom="fichier3">
+        <infos ID="Emplacement" Nom="emplacemen3"/>
+        <infos ID="Auteur" Nom="auteur3"/>
+        <infos ID="cree le" Nom="cree3"/>
+        <infos ID="modifier le" Nom="modifier3"/>
+        <infos ID="Taille" Nom="taille3"/>
+        <infos ID="Taille sur disque" Nom="tailledisque3"/>
+        <infos ID="Description" Nom="description3"/>
+    </fichier>
+    
+</fichiers>

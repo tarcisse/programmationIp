@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-threads-3 -->
+<html class="js no-touch history video audio cssfilters" lang="fr" prefix="og: http://ogp.me/ns#"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="./Les threads_files/menu169.js"></script><script type="text/javascript" src="./Les threads_files/fr.js"></script><script type="text/javascript" src="./Les threads_files/layers091.js"></script>
+
+        <script type="text/javascript" async="" src="./Les threads_files/cae751c69240593a64767b92840535c1228047aa"></script><script type="text/javascript" async="" src="./Les threads_files/chartbeat.js"></script><script type="text/javascript" async="" src="./Les threads_files/intercom.v1.js"></script><script type="text/javascript" async="" src="./Les threads_files/gtm.js"></script><script type="text/javascript" async="" src="./Les threads_files/mixpanel-2.2.min.js"></script><script type="text/javascript" async="" src="./Les threads_files/analytics.js"></script><script type="text/javascript" async="" src="./Les threads_files/conversion_async.js"></script><script src="./Les threads_files/whap.js" async="true"></script><script type="text/javascript" id="analytics-js" async="" src="./Les threads_files/analytics.min.js"></script><script async="" type="text/javascript" src="./Les threads_files/gpt.js"></script><script src="./Les threads_files/ace.js"></script><script src="./Les threads_files/ext-static_highlight.js"></script><script type="text/javascript">
+            var App = {};
+            App.startTime = (new Date()).getTime();
+            App.flashMessages = [];
+
+            var _sf_startpt = App.startTime;
+        </script>
+
+        <meta charset="utf-8"><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=u(e),f=c.length,s=i(a,o,r),p=0;f>p;p++)c[p].apply(s,n);return s}function a(t,e){f[t]=u(t).concat(e)}function u(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:u,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=l.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),u=window,c=u.document,f="addEventListener",s="attachEvent",p=(""+location).split("?")[0],l=e.exports={offset:i(),origin:p,features:{}};c[f]?(c[f]("DOMContentLoaded",o,!1),u[f]("load",n,!1)):(c[s]("onreadystatechange",r),u[s]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}]},{},["G9z0Bl"]);</script>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="application-name" content="OpenClassrooms">
+        <meta name="msapplication-TileColor" content="#002D40">
+        <meta name="msapplication-TileImage" content="/bundles/common/images/928bd40a-9507-4495-977d-ace7d554190b.png">
+
+        
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+                    <link href="./Les threads_files/master.css" type="text/css" rel="stylesheet" media="all">
+        
+                <link href="./Les threads_files/main.css" type="text/css" rel="stylesheet" media="all">
+    
+        <script src="./Les threads_files/jquery.min.js"></script>
+                <script>window.jQuery || document.write('<script src="/bundles/common/js/SdZ/lib/jquery-1.10.1.js">\x3C/script>')</script>
+
+                <script type="text/javascript" src="./Les threads_files/modernizr.js"></script>
+        
+        <link rel="shortcut icon" href="http://openclassrooms.com/favicon.ico?222298df4w32b">
+
+            
+<meta property="og:locale" content="fr">
+<meta property="og:type" content="website">
+
+<meta property="og:title" content="Découvrez le cours " les="" threads"="" sur="" @openclassrooms"="">
+<meta property="og:url" content="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-threads-3">
+<meta property="og:site_name" content="OpenClassrooms">
+<meta property="og:image" content="http://static.siteduzero.com/prod/icons/courses/defaultV2.png">
+<meta property="og:description" content="">
+
+            
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@OpenClassrooms">
+<meta name="twitter:title" content="Découvrez le cours " les="" threads"="" sur="" @openclassrooms"="">
+<meta name="twitter:description" content="">
+
+            <link rel="prefetch prerender" href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-tubes">
+
+                
+        <title>Les threads</title>
+
+        <!-- inlined top javascript block -->
+
+        <script type="text/javascript">
+
+            
+            App.user = {
+                
+                
+                
+                isPremium: false
+            }
+
+            App.preferences = {
+                assetVersion: '222298df4w32b'
+
+                                            };
+
+            App.preferences.modules = {
+                'smiley': {
+                    basePath: '/bundles/common/images/smiley/'
+                }
+            };
+
+            
+                
+                    var googletag = googletag || {};
+                    googletag.cmd = googletag.cmd || [];
+                    (function() {
+                    var gads = document.createElement('script');
+                    gads.async = true;
+                    gads.type = 'text/javascript';
+                    var useSSL = 'https:' == document.location.protocol;
+                    gads.src = (useSSL ? 'https:' : 'http:') +
+                    '//www.googletagservices.com/tag/js/gpt.js';
+                    var node = document.getElementsByTagName('script')[0];
+                    node.parentNode.insertBefore(gads, node);
+                        })();
+
+                    googletag.cmd.push(function() {
+                            if (window.innerWidth >= 728)
+    {
+        googletag.defineSlot('/1017495/megabann_tutoriels_header_728x90px', [728, 90], 'div-gpt-ad-1350977194635-9').addService(googletag.pubads());
+        googletag.defineSlot('/1017495/megabann_tutoriels_footer_728x90px', [[605, 100], [728, 90]], 'div-gpt-ad-1350977194635-8').addService(googletag.pubads());
+    }
+    else
+    {
+        googletag.defineSlot('/1017495/bann_mobile_tutoriels_footer_320x50px', [320, 50], 'div-gpt-ad-1350977284180-8').addService(googletag.pubads());
+        googletag.defineSlot('/1017495/bann_mobile_tutoriels_header_320x50px', [320, 50], 'div-gpt-ad-1350977284180-9').addService(googletag.pubads());
+    }
+
+
+                        googletag.pubads().setTargeting("userType", "0");
+
+                                                                                                            googletag.pubads().setTargeting("category", "1");
+                        
+                        
+                        googletag.pubads().enableSingleRequest();
+                        googletag.enableServices();
+                    });
+                                    </script>
+        <!-- inlined top javascript block end -->
+
+        <script>    App.preferences.modules['course/view/internalFolding'] = {
+        isBigCourse: true
+    };
+
+    App.preferences.modules['course/view/traces'] = {
+        courseId: '1513891',
+        partId: '1514567'
+    };
+
+</script>
+
+        
+        <!-- Start Visual Website Optimizer Asynchronous Code -->
+<script type="text/javascript">
+var _vwo_code = (function() {
+    var account_id = 98355,
+    settings_tolerance = 2000,
+    library_tolerance = 2500,
+    use_existing_jquery = true,
+    // DO NOT EDIT BELOW THIS LINE
+    f = false,
+    d = document;
+
+    return {
+    use_existing_jquery: function() {
+    return use_existing_jquery;
+    },
+library_tolerance: function() {
+    return library_tolerance;
+    },
+finish: function() {
+    if (!f) {
+    f = true;
+    var a = d.getElementById('_vis_opt_path_hides');
+    if (a) a.parentNode.removeChild(a);
+    }
+},
+finished: function() {
+    return f;
+    },
+load: function(a) {
+    var b = d.createElement('script');
+    b.src = a;
+    b.type = 'text/javascript';
+    b.innerText;
+    b.onerror = function() {
+    _vwo_code.finish();
+    };
+d.getElementsByTagName('head')[0].appendChild(b);
+},
+init: function() {
+    settings_timer = setTimeout('_vwo_code.finish()', settings_tolerance);
+    this.load('//dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(d.URL) + '&r=' + Math.random());
+    var a = d.createElement('style'),
+    b = 'body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',
+h = d.getElementsByTagName('head')[0];
+a.setAttribute('id', '_vis_opt_path_hides');
+a.setAttribute('type', 'text/css');
+if (a.styleSheet) a.styleSheet.cssText = b;
+else a.appendChild(d.createTextNode(b));
+h.appendChild(a);
+return settings_timer;
+}
+};
+}());
+_vwo_settings_timer = _vwo_code.init();
+</script><script src="./Les threads_files/j.php" type="text/javascript"></script>
+<!-- End Visual Website Optimizer Asynchronous Code -->
+
+    <style type="text/css">.fancybox-margin{margin-right:17px;}</style><style>@-webkit-keyframes popmtarsyunvqfmzdqktyfyqwezymvlsoruoonmmyyxvfgvi {50% {-webkit-transform:scale(1.2);}100% {-webkit-transform:scale(1);}}@keyframes popmtarsyunvqfmzdqktyfyqwezymvlsoruoonmmyyxvfgvi {50% {-webkit-transform:scale(1.2);transform:scale(1.2);}100% {-webkit-transform:scale(1);transform:scale(1);}}#mtarsyunvqfmzdqktyfyqwezymvlsoruoonmmyyxvfgvi{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;border:solid 2px #fff !important;box-sizing:content-box !important;color:#fff !important;display:block !important;height:auto !important;margin:0 !important;opacity:0.9 !important;padding:7px 10px !important;position:fixed !important;visibility:visible !important;width:auto !important;z-index:2147483647 !important;-webkit-border-radius:5px !important;-webkit-box-shadow:0px 0px 20px #000 !important;-webkit-box-sizing:content-box !important;}.mtarsyunvqfmzdqktyfyqwezymvlsoruoonmmyyxvfgvi-blocked{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;color:#AAA !important;display:inline !important;text-decoration:line-through !important;}#mtarsyunvqfmzdqktyfyqwezymvlsoruoonmmyyxvfgvi br{display:block !important;padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;}#mtarsyunvqfmzdqktyfyqwezymvlsoruoonmmyyxvfgvi span{background:transparent !important;padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;}#mtarsyunvqfmzdqktyfyqwezymvlsoruoonmmyyxvfgvi div{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;border:0 !important;margin:0 !important;padding:0 !important;width:auto !important;letter-spacing:normal !important;font:13px Arial,Helvetica !important;text-align:left !important;text-shadow:none !important;text-transform:none !important;word-spacing:normal !important;}#mtarsyunvqfmzdqktyfyqwezymvlsoruoonmmyyxvfgvi a{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;font-weight:normal !important;background:none !important;text-decoration:underline !important;color:#fff !important;}a#mtarsyunvqfmzdqktyfyqwezymvlsoruoonmmyyxvfgvi-gear{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;text-decoration:none !important;position:absolute !important;display:none !important;font-size:20px !important;width:20px !important;height:20px !important;line-height:20px !important;text-align:center !important;background-color:rgba(255,255,255,.8) !important;background-image:url(chrome-extension://mlomiejdfkolichcflejclcbmpeaniij/data/images/gear.svg) !important;background-size:16px 16px !important;background-position:center center !important;background-repeat:no-repeat !important;text-decoration:none !important;}a#mtarsyunvqfmzdqktyfyqwezymvlsoruoonmmyyxvfgvi-gear:hover{-webkit-animation-name:popmtarsyunvqfmzdqktyfyqwezymvlsoruoonmmyyxvfgvi !important;animation-name:popmtarsyunvqfmzdqktyfyqwezymvlsoruoonmmyyxvfgvi !important;-webkit-animation-duration:0.3s !important;animation-duration:0.3s !important;}#mtarsyunvqfmzdqktyfyqwezymvlsoruoonmmyyxvfgvi:hover #mtarsyunvqfmzdqktyfyqwezymvlsoruoonmmyyxvfgvi-gear{text-decoration:none !important;display:inline-block !important;}@media print{#mtarsyunvqfmzdqktyfyqwezymvlsoruoonmmyyxvfgvi{display:none !important;}}</style><link rel="stylesheet" type="text/css" href="./Les threads_files/widget009.old.css" media="all"><script async="" type="text/javascript" src="http://partner.googleadservices.com/gpt/pubads_impl_55.js"></script><style id="ace_editor">.ace_editor {position: relative;overflow: hidden;font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;font-size: 12px;line-height: normal;color: black;}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: text;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUM2OEZDQTQ4RTU0MTFFMUEzM0VFRTM2RUY1M0RBMjYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUM2OEZDQTU4RTU0MTFFMUEzM0VFRTM2RUY1M0RBMjYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBQzY4RkNBMjhFNTQxMUUxQTMzRUVFMzZFRjUzREEyNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBQzY4RkNBMzhFNTQxMUUxQTMzRUVFMzZFRjUzREEyNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkgXxbAAAAJbSURBVHjapFNNaBNBFH4zs5vdZLP5sQmNpT82QY209heh1ioWisaDRcSKF0WKJ0GQnrzrxasHsR6EnlrwD0TagxJabaVEpFYxLWlLSS822tr87m66ccfd2GKyVhA6MMybgfe97/vmPUQphd0sZjto9XIn9OOsvlu2nkqRzVU+6vvlzPf8W6bk8dxQ0NPbxAALgCgg2JkaQuhzQau/El0zbmUA7U0Es8v2CiYmKQJHGO1QICCLoqilMhkmurDAyapKgqItezi/USRdJqEYY4D5jCy03ht2yMkkvL91jTTX10qzyyu2hruPRN7jgbH+EOsXcMLgYiThEgAMhABW85oqy1DXdRIdvP1AHJ2acQXvDIrVHcdQNrEKNYSVMSZGMjEzIIAwDXIo+6G/FxcGnzkC3T2oMhLjre49sBB+RRcHLqdafK6sYdE/GGBwU1VpFNj0aN8pJbe+BkZyevUrvLl6Xmm0W9IuTc0DxrDNAJd5oEvI/KRsNC3bQyNjPO9yQ1YHcfj2QvfQc/5TUhJTBc2iM0U7AWDQtc1nJHvD/cfO2s7jaGkiTEfa/Ep8coLu7zmNmh8+dc5lZDuUeFAGUNA/OY6JVaypQ0vjr7XYjUvJM37vt+j1vuTK5DgVfVUoTjVe+y3/LxMxY2GgU+CSLy4cpfsYorRXuXIOi0Vt40h67uZFTdIo6nLaZcwUJWAzwNS0tBnqqKzQDnjdG/iPyZxo46HaKUpbvYkj8qYRTZsBhge+JHhZyh0x9b95JqjVJkT084kZIPwu/mPWqPgfQ5jXh2+92Ay7HedfAgwA6KDWafb4w3cAAAAASUVORK5CYII=");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUM2OEZDQTg4RTU0MTFFMUEzM0VFRTM2RUY1M0RBMjYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUM2OEZDQTk4RTU0MTFFMUEzM0VFRTM2RUY1M0RBMjYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBQzY4RkNBNjhFNTQxMUUxQTMzRUVFMzZFRjUzREEyNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBQzY4RkNBNzhFNTQxMUUxQTMzRUVFMzZFRjUzREEyNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pgd7PfIAAAGmSURBVHjaYvr//z8DJZiJgUIANoCRkREb9gLiSVAaQx4OQM7AAkwd7XU2/v++/rOttdYGEB9dASEvOMydGKfH8Gv/p4XTkvRBfLxeQAP+1cUhXopyvzhP7P/IoSj7g7Mw09cNKO6J1QQ0L4gICPIv/veg/8W+JdFvQNLHVsW9/nmn9zk7B+cCkDwhL7gt6knSZnx9/LuCEOcvkIAMP+cvto9nfqyZmmUAksfnBUtbM60gX/3/kgyv3/xSFOL5DZT+L8vP+Yfh5cvfPvp/xUHyQHXGyAYwgpwBjZYFT3Y1OEl/OfCH4ffv3wzc4iwMvNIsDJ+f/mH4+vIPAxsb631WW0Yln6ZpQLXdMK/DXGDflh+sIv37EivD5x//Gb7+YWT4y86sl7BCCkSD+Z++/1dkvsFRl+HnD1Rvje4F8whjMXmGj58YGf5zsDMwcnAwfPvKcml62DsQDeaDxN+/Y0qwlpEHqrdB94IRNIDUgfgfKJChGK4OikEW3gTiXUB950ASLFAF54AC94A0G9QAfOnmF9DCDzABFqS08IHYDIScdijOjQABBgC+/9awBH96jwAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/gif;base64,R0lGODlhEAAQAMQAAAAAAEFBQVJSUl5eXmRkZGtra39/f4WFhYmJiZGRkaampry8vMPDw8zMzNXV1dzc3OTk5Orq6vDw8P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABQALAAAAAAQABAAAAUuICWOZGmeaBml5XGwFCQSBGyXRSAwtqQIiRuiwIM5BoYVbEFIyGCQoeJGrVptIQA7");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGRTk5MTVGREIxNDkxMUUxOTc5Q0FFREQyMTNGMjBFQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGRTk5MTVGRUIxNDkxMUUxOTc5Q0FFREQyMTNGMjBFQyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZFOTkxNUZCQjE0OTExRTE5NzlDQUVERDIxM0YyMEVDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkZFOTkxNUZDQjE0OTExRTE5NzlDQUVERDIxM0YyMEVDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+SIDkjAAAAJ1JREFUeNpi/P//PwMlgImBQkB7A6qrq/+DMC55FkIGKCoq4pVnpFkgTp069f/+/fv/r1u37r+tre1/kg0A+ptn9uzZYLaRkRHpLvjw4cNXWVlZhufPnzOcO3eOdAO0tbVPAjHDmzdvGA4fPsxIsgGSkpJmv379Ynj37h2DjIyMCMkG3LhxQ/T27dsMampqDHZ2dq/pH41DxwCAAAMAFdc68dUsFZgAAAAASUVORK5CYII=");}.ace_scrollbar {position: absolute;overflow: hidden;overflow-y: auto;right: 0;top: 0;bottom: 0;}.ace_scrollbar-inner {position: absolute;width: 1px;left: 0;}.ace_scrollbar-h {position: absolute;overflow-x: auto;overflow-y: hidden;right: 0;left: 0;bottom: 0;}.ace_scrollbar-inner {position: absolute;height: 1px;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;}.ace_text-input.ace_composition {background: #f8f8f8;color: #111;z-index: 1000;opacity: 1;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;white-space: nowrap;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;/* setting pointer-events: auto; on node under the mouse, which changesduring scroll, will break mouse wheel scrolling in Safari */pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-moz-transition: opacity 0.18s;-webkit-transition: opacity 0.18s;-o-transition: opacity 0.18s;-ms-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_cursor[style*="opacity: 0"]{-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";}.ace_editor.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_line {white-space: nowrap;}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%11%00%00%00%09%08%06%00%00%00%D4%E8%C7%0C%00%00%03%1EiCCPICC%20Profile%00%00x%01%85T%DFk%D3P%14%FE%DAe%9D%B0%E1%8B%3Ag%11%09%3Eh%91ndStC%9C%B6kW%BA%CDZ%EA6%B7!H%9B%A6m%5C%9A%C6%24%ED~%B0%07%D9%8Bo%3A%C5w%F1%07%3E%F9%07%0C%D9%83o%7B%92%0D%C6%14a%F8%AC%88%22L%F6%22%B3%9E%9B4M'S%03%B9%F7%BB%DF%F9%EE9'%E7%E4%5E%A0%F9qZ%D3%14%2F%0F%14USO%C5%C2%FC%C4%E4%14%DF%F2%01%5E%1CC%2B%FChM%8B%86%16J%26G%40%0F%D3%B2y%EF%B3%F3%0E%1E%C6lt%EEo%DF%AB%FEc%D5%9A%95%0C%11%F0%1C%20%BE%945%C4%22%E1Y%A0i%5C%D4t%13%E0%D6%89%EF%9D15%C2%CDLsX%A7%04%09%1Fg8oc%81%E1%8C%8D%23%96f45%40%9A%09%C2%07%C5B%3AK%B8%408%98i%E0%F3%0D%D8%CE%81%14%E4'%26%A9%92.%8B%3C%ABER%2F%E5dE%B2%0C%F6%F0%1Fs%83%F2_%B0%A8%94%E9%9B%AD%E7%10%8Dm%9A%19N%D1%7C%8A%DE%1F9%7Dp%8C%E6%00%D5%C1%3F_%18%BDA%B8%9DpX6%E3%A35~B%CD%24%AE%11%26%BD%E7%EEti%98%EDe%9A%97Y)%12%25%1C%24%BCbT%AE3li%E6%0B%03%89%9A%E6%D3%ED%F4P%92%B0%9F4%BF43Y%F3%E3%EDP%95%04%EB1%C5%F5%F6KF%F4%BA%BD%D7%DB%91%93%07%E35%3E%A7)%D6%7F%40%FE%BD%F7%F5r%8A%E5y%92%F0%EB%B4%1E%8D%D5%F4%5B%92%3AV%DB%DB%E4%CD%A6%23%C3%C4wQ%3F%03HB%82%8E%1Cd(%E0%91B%0Ca%9Ac%C4%AA%F8L%16%19%22J%A4%D2itTy%B28%D6%3B(%93%96%ED%1CGx%C9_%0E%B8%5E%16%F5%5B%B2%B8%F6%E0%FB%9E%DD%25%D7%8E%BC%15%85%C5%B7%A3%D8Q%ED%B5%81%E9%BA%B2%13%9A%1B%7Fua%A5%A3n%E17%B9%E5%9B%1Bm%AB%0B%08Q%FE%8A%E5%B1H%5Ee%CAO%82Q%D7u6%E6%90S%97%FCu%0B%CF2%94%EE%25v%12X%0C%BA%AC%F0%5E%F8*l%0AO%85%17%C2%97%BF%D4%C8%CE%DE%AD%11%CB%80q%2C%3E%AB%9ES%CD%C6%EC%25%D2L%D2%EBd%B8%BF%8A%F5B%C6%18%F9%901CZ%9D%BE%24M%9C%8A9%F2%DAP%0B'%06w%82%EB%E6%E2%5C%2F%D7%07%9E%BB%CC%5D%E1%FA%B9%08%AD.r%23%8E%C2%17%F5E%7C!%F0%BE3%BE%3E_%B7o%88a%A7%DB%BE%D3d%EB%A31Z%EB%BB%D3%91%BA%A2%B1z%94%8F%DB'%F6%3D%8E%AA%13%19%B2%B1%BE%B1~V%08%2B%B4%A2cjJ%B3tO%00%03%25mN%97%F3%05%93%EF%11%84%0B%7C%88%AE-%89%8F%ABbW%90O%2B%0Ao%99%0C%5E%97%0CI%AFH%D9.%B0%3B%8F%ED%03%B6S%D6%5D%E6i_s9%F3*p%E9%1B%FD%C3%EB.7U%06%5E%19%C0%D1s.%17%A03u%E4%09%B0%7C%5E%2C%EB%15%DB%1F%3C%9E%B7%80%91%3B%DBc%AD%3Dma%BA%8B%3EV%AB%DBt.%5B%1E%01%BB%0F%AB%D5%9F%CF%AA%D5%DD%E7%E4%7F%0Bx%A3%FC%06%A9%23%0A%D6%C2%A1_2%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%9A%9C%18%00%00%00%B5IDAT(%15%A5%91%3D%0E%02!%10%85ac%E1%05%D6%CE%D6%C6%CE%D2%E8%ED%CD%DE%C0%C6%D6N.%E0V%F8%3D%9Ca%891XH%C2%BE%D9y%3F%90!%E6%9C%C3%BFk%E5%011%C6-%F5%C8N%04%DF%BD%FF%89%DFt%83DN%60%3E%F3%AB%A0%DE%1A%5Dg%BE%10Q%97%1B%40%9C%A8o%10%8F%5E%828%B4%1B%60%87%F6%02%26%85%1Ch%1E%C1%2B%5Bk%FF%86%EE%B7j%09%9A%DA%9B%ACe%A3%F9%EC%DA!9%B4%D5%A6%81%86%86%98%CC%3C%5B%40%FA%81%B3%E9%CB%23%94%C16Azo%05%D4%E1%C1%95a%3B%8A'%A0%E8%CC%17%22%85%1D%BA%00%A2%FA%DC%0A%94%D1%D1%8D%8B%3A%84%17B%C7%60%1A%25Z%FC%8D%00%00%00%00IEND%AEB%60%82"),url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%05%00%00%007%08%06%00%00%00%C4%DD%80C%00%00%03%1EiCCPICC%20Profile%00%00x%01%85T%DFk%D3P%14%FE%DAe%9D%B0%E1%8B%3Ag%11%09%3Eh%91ndStC%9C%B6kW%BA%CDZ%EA6%B7!H%9B%A6m%5C%9A%C6%24%ED~%B0%07%D9%8Bo%3A%C5w%F1%07%3E%F9%07%0C%D9%83o%7B%92%0D%C6%14a%F8%AC%88%22L%F6%22%B3%9E%9B4M'S%03%B9%F7%BB%DF%F9%EE9'%E7%E4%5E%A0%F9qZ%D3%14%2F%0F%14USO%C5%C2%FC%C4%E4%14%DF%F2%01%5E%1CC%2B%FChM%8B%86%16J%26G%40%0F%D3%B2y%EF%B3%F3%0E%1E%C6lt%EEo%DF%AB%FEc%D5%9A%95%0C%11%F0%1C%20%BE%945%C4%22%E1Y%A0i%5C%D4t%13%E0%D6%89%EF%9D15%C2%CDLsX%A7%04%09%1Fg8oc%81%E1%8C%8D%23%96f45%40%9A%09%C2%07%C5B%3AK%B8%408%98i%E0%F3%0D%D8%CE%81%14%E4'%26%A9%92.%8B%3C%ABER%2F%E5dE%B2%0C%F6%F0%1Fs%83%F2_%B0%A8%94%E9%9B%AD%E7%10%8Dm%9A%19N%D1%7C%8A%DE%1F9%7Dp%8C%E6%00%D5%C1%3F_%18%BDA%B8%9DpX6%E3%A35~B%CD%24%AE%11%26%BD%E7%EEti%98%EDe%9A%97Y)%12%25%1C%24%BCbT%AE3li%E6%0B%03%89%9A%E6%D3%ED%F4P%92%B0%9F4%BF43Y%F3%E3%EDP%95%04%EB1%C5%F5%F6KF%F4%BA%BD%D7%DB%91%93%07%E35%3E%A7)%D6%7F%40%FE%BD%F7%F5r%8A%E5y%92%F0%EB%B4%1E%8D%D5%F4%5B%92%3AV%DB%DB%E4%CD%A6%23%C3%C4wQ%3F%03HB%82%8E%1Cd(%E0%91B%0Ca%9Ac%C4%AA%F8L%16%19%22J%A4%D2itTy%B28%D6%3B(%93%96%ED%1CGx%C9_%0E%B8%5E%16%F5%5B%B2%B8%F6%E0%FB%9E%DD%25%D7%8E%BC%15%85%C5%B7%A3%D8Q%ED%B5%81%E9%BA%B2%13%9A%1B%7Fua%A5%A3n%E17%B9%E5%9B%1Bm%AB%0B%08Q%FE%8A%E5%B1H%5Ee%CAO%82Q%D7u6%E6%90S%97%FCu%0B%CF2%94%EE%25v%12X%0C%BA%AC%F0%5E%F8*l%0AO%85%17%C2%97%BF%D4%C8%CE%DE%AD%11%CB%80q%2C%3E%AB%9ES%CD%C6%EC%25%D2L%D2%EBd%B8%BF%8A%F5B%C6%18%F9%901CZ%9D%BE%24M%9C%8A9%F2%DAP%0B'%06w%82%EB%E6%E2%5C%2F%D7%07%9E%BB%CC%5D%E1%FA%B9%08%AD.r%23%8E%C2%17%F5E%7C!%F0%BE3%BE%3E_%B7o%88a%A7%DB%BE%D3d%EB%A31Z%EB%BB%D3%91%BA%A2%B1z%94%8F%DB'%F6%3D%8E%AA%13%19%B2%B1%BE%B1~V%08%2B%B4%A2cjJ%B3tO%00%03%25mN%97%F3%05%93%EF%11%84%0B%7C%88%AE-%89%8F%ABbW%90O%2B%0Ao%99%0C%5E%97%0CI%AFH%D9.%B0%3B%8F%ED%03%B6S%D6%5D%E6i_s9%F3*p%E9%1B%FD%C3%EB.7U%06%5E%19%C0%D1s.%17%A03u%E4%09%B0%7C%5E%2C%EB%15%DB%1F%3C%9E%B7%80%91%3B%DBc%AD%3Dma%BA%8B%3EV%AB%DBt.%5B%1E%01%BB%0F%AB%D5%9F%CF%AA%D5%DD%E7%E4%7F%0Bx%A3%FC%06%A9%23%0A%D6%C2%A1_2%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%9A%9C%18%00%00%00%3AIDAT8%11c%FC%FF%FF%7F%18%03%1A%60%01%F2%3F%A0%891%80%04%FF%11-%F8%17%9BJ%E2%05%B1ZD%81v%26t%E7%80%F8%A3%82h%A12%1A%20%A3%01%02%0F%01%BA%25%06%00%19%C0%0D%AEF%D5%3ES%00%00%00%00IEND%AEB%60%82");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%11%00%00%00%09%08%06%00%00%00%D4%E8%C7%0C%00%00%03%1EiCCPICC%20Profile%00%00x%01%85T%DFk%D3P%14%FE%DAe%9D%B0%E1%8B%3Ag%11%09%3Eh%91ndStC%9C%B6kW%BA%CDZ%EA6%B7!H%9B%A6m%5C%9A%C6%24%ED~%B0%07%D9%8Bo%3A%C5w%F1%07%3E%F9%07%0C%D9%83o%7B%92%0D%C6%14a%F8%AC%88%22L%F6%22%B3%9E%9B4M'S%03%B9%F7%BB%DF%F9%EE9'%E7%E4%5E%A0%F9qZ%D3%14%2F%0F%14USO%C5%C2%FC%C4%E4%14%DF%F2%01%5E%1CC%2B%FChM%8B%86%16J%26G%40%0F%D3%B2y%EF%B3%F3%0E%1E%C6lt%EEo%DF%AB%FEc%D5%9A%95%0C%11%F0%1C%20%BE%945%C4%22%E1Y%A0i%5C%D4t%13%E0%D6%89%EF%9D15%C2%CDLsX%A7%04%09%1Fg8oc%81%E1%8C%8D%23%96f45%40%9A%09%C2%07%C5B%3AK%B8%408%98i%E0%F3%0D%D8%CE%81%14%E4'%26%A9%92.%8B%3C%ABER%2F%E5dE%B2%0C%F6%F0%1Fs%83%F2_%B0%A8%94%E9%9B%AD%E7%10%8Dm%9A%19N%D1%7C%8A%DE%1F9%7Dp%8C%E6%00%D5%C1%3F_%18%BDA%B8%9DpX6%E3%A35~B%CD%24%AE%11%26%BD%E7%EEti%98%EDe%9A%97Y)%12%25%1C%24%BCbT%AE3li%E6%0B%03%89%9A%E6%D3%ED%F4P%92%B0%9F4%BF43Y%F3%E3%EDP%95%04%EB1%C5%F5%F6KF%F4%BA%BD%D7%DB%91%93%07%E35%3E%A7)%D6%7F%40%FE%BD%F7%F5r%8A%E5y%92%F0%EB%B4%1E%8D%D5%F4%5B%92%3AV%DB%DB%E4%CD%A6%23%C3%C4wQ%3F%03HB%82%8E%1Cd(%E0%91B%0Ca%9Ac%C4%AA%F8L%16%19%22J%A4%D2itTy%B28%D6%3B(%93%96%ED%1CGx%C9_%0E%B8%5E%16%F5%5B%B2%B8%F6%E0%FB%9E%DD%25%D7%8E%BC%15%85%C5%B7%A3%D8Q%ED%B5%81%E9%BA%B2%13%9A%1B%7Fua%A5%A3n%E17%B9%E5%9B%1Bm%AB%0B%08Q%FE%8A%E5%B1H%5Ee%CAO%82Q%D7u6%E6%90S%97%FCu%0B%CF2%94%EE%25v%12X%0C%BA%AC%F0%5E%F8*l%0AO%85%17%C2%97%BF%D4%C8%CE%DE%AD%11%CB%80q%2C%3E%AB%9ES%CD%C6%EC%25%D2L%D2%EBd%B8%BF%8A%F5B%C6%18%F9%901CZ%9D%BE%24M%9C%8A9%F2%DAP%0B'%06w%82%EB%E6%E2%5C%2F%D7%07%9E%BB%CC%5D%E1%FA%B9%08%AD.r%23%8E%C2%17%F5E%7C!%F0%BE3%BE%3E_%B7o%88a%A7%DB%BE%D3d%EB%A31Z%EB%BB%D3%91%BA%A2%B1z%94%8F%DB'%F6%3D%8E%AA%13%19%B2%B1%BE%B1~V%08%2B%B4%A2cjJ%B3tO%00%03%25mN%97%F3%05%93%EF%11%84%0B%7C%88%AE-%89%8F%ABbW%90O%2B%0Ao%99%0C%5E%97%0CI%AFH%D9.%B0%3B%8F%ED%03%B6S%D6%5D%E6i_s9%F3*p%E9%1B%FD%C3%EB.7U%06%5E%19%C0%D1s.%17%A03u%E4%09%B0%7C%5E%2C%EB%15%DB%1F%3C%9E%B7%80%91%3B%DBc%AD%3Dma%BA%8B%3EV%AB%DBt.%5B%1E%01%BB%0F%AB%D5%9F%CF%AA%D5%DD%E7%E4%7F%0Bx%A3%FC%06%A9%23%0A%D6%C2%A1_2%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%9A%9C%18%00%00%00%B5IDAT(%15%A5%91%3D%0E%02!%10%85ac%E1%05%D6%CE%D6%C6%CE%D2%E8%ED%CD%DE%C0%C6%D6N.%E0V%F8%3D%9Ca%891XH%C2%BE%D9y%3F%90!%E6%9C%C3%BFk%E5%011%C6-%F5%C8N%04%DF%BD%FF%89%DFt%83DN%60%3E%F3%AB%A0%DE%1A%5Dg%BE%10Q%97%1B%40%9C%A8o%10%8F%5E%828%B4%1B%60%87%F6%02%26%85%1Ch%1E%C1%2B%5Bk%FF%86%EE%B7j%09%9A%DA%9B%ACe%A3%F9%EC%DA!9%B4%D5%A6%81%86%86%98%CC%3C%5B%40%FA%81%B3%E9%CB%23%94%C16Azo%05%D4%E1%C1%95a%3B%8A'%A0%E8%CC%17%22%85%1D%BA%00%A2%FA%DC%0A%94%D1%D1%8D%8B%3A%84%17B%C7%60%1A%25Z%FC%8D%00%00%00%00IEND%AEB%60%82"),url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%05%00%00%007%08%06%00%00%00%C4%DD%80C%00%00%03%1EiCCPICC%20Profile%00%00x%01%85T%DFk%D3P%14%FE%DAe%9D%B0%E1%8B%3Ag%11%09%3Eh%91ndStC%9C%B6kW%BA%CDZ%EA6%B7!H%9B%A6m%5C%9A%C6%24%ED~%B0%07%D9%8Bo%3A%C5w%F1%07%3E%F9%07%0C%D9%83o%7B%92%0D%C6%14a%F8%AC%88%22L%F6%22%B3%9E%9B4M'S%03%B9%F7%BB%DF%F9%EE9'%E7%E4%5E%A0%F9qZ%D3%14%2F%0F%14USO%C5%C2%FC%C4%E4%14%DF%F2%01%5E%1CC%2B%FChM%8B%86%16J%26G%40%0F%D3%B2y%EF%B3%F3%0E%1E%C6lt%EEo%DF%AB%FEc%D5%9A%95%0C%11%F0%1C%20%BE%945%C4%22%E1Y%A0i%5C%D4t%13%E0%D6%89%EF%9D15%C2%CDLsX%A7%04%09%1Fg8oc%81%E1%8C%8D%23%96f45%40%9A%09%C2%07%C5B%3AK%B8%408%98i%E0%F3%0D%D8%CE%81%14%E4'%26%A9%92.%8B%3C%ABER%2F%E5dE%B2%0C%F6%F0%1Fs%83%F2_%B0%A8%94%E9%9B%AD%E7%10%8Dm%9A%19N%D1%7C%8A%DE%1F9%7Dp%8C%E6%00%D5%C1%3F_%18%BDA%B8%9DpX6%E3%A35~B%CD%24%AE%11%26%BD%E7%EEti%98%EDe%9A%97Y)%12%25%1C%24%BCbT%AE3li%E6%0B%03%89%9A%E6%D3%ED%F4P%92%B0%9F4%BF43Y%F3%E3%EDP%95%04%EB1%C5%F5%F6KF%F4%BA%BD%D7%DB%91%93%07%E35%3E%A7)%D6%7F%40%FE%BD%F7%F5r%8A%E5y%92%F0%EB%B4%1E%8D%D5%F4%5B%92%3AV%DB%DB%E4%CD%A6%23%C3%C4wQ%3F%03HB%82%8E%1Cd(%E0%91B%0Ca%9Ac%C4%AA%F8L%16%19%22J%A4%D2itTy%B28%D6%3B(%93%96%ED%1CGx%C9_%0E%B8%5E%16%F5%5B%B2%B8%F6%E0%FB%9E%DD%25%D7%8E%BC%15%85%C5%B7%A3%D8Q%ED%B5%81%E9%BA%B2%13%9A%1B%7Fua%A5%A3n%E17%B9%E5%9B%1Bm%AB%0B%08Q%FE%8A%E5%B1H%5Ee%CAO%82Q%D7u6%E6%90S%97%FCu%0B%CF2%94%EE%25v%12X%0C%BA%AC%F0%5E%F8*l%0AO%85%17%C2%97%BF%D4%C8%CE%DE%AD%11%CB%80q%2C%3E%AB%9ES%CD%C6%EC%25%D2L%D2%EBd%B8%BF%8A%F5B%C6%18%F9%901CZ%9D%BE%24M%9C%8A9%F2%DAP%0B'%06w%82%EB%E6%E2%5C%2F%D7%07%9E%BB%CC%5D%E1%FA%B9%08%AD.r%23%8E%C2%17%F5E%7C!%F0%BE3%BE%3E_%B7o%88a%A7%DB%BE%D3d%EB%A31Z%EB%BB%D3%91%BA%A2%B1z%94%8F%DB'%F6%3D%8E%AA%13%19%B2%B1%BE%B1~V%08%2B%B4%A2cjJ%B3tO%00%03%25mN%97%F3%05%93%EF%11%84%0B%7C%88%AE-%89%8F%ABbW%90O%2B%0Ao%99%0C%5E%97%0CI%AFH%D9.%B0%3B%8F%ED%03%B6S%D6%5D%E6i_s9%F3*p%E9%1B%FD%C3%EB.7U%06%5E%19%C0%D1s.%17%A03u%E4%09%B0%7C%5E%2C%EB%15%DB%1F%3C%9E%B7%80%91%3B%DBc%AD%3Dma%BA%8B%3EV%AB%DBt.%5B%1E%01%BB%0F%AB%D5%9F%CF%AA%D5%DD%E7%E4%7F%0Bx%A3%FC%06%A9%23%0A%D6%C2%A1_2%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%9A%9C%18%00%00%003IDAT8%11c%FC%FF%FF%7F%3E%03%1A%60%01%F2%3F%A3%891%80%04%FFQ%26%F8w%C0%B43%A1%DB%0C%E2%8F%0A%A2%85%CAh%80%8C%06%08%3C%04%E8%96%18%00%A3S%0D%CD%CF%D8%C1%9D%00%00%00%00IEND%AEB%60%82");background-repeat: no-repeat, repeat-x;background-position: center center, top left;}.ace_editor.ace_dragging .ace_content {cursor: move;}.ace_gutter-tooltip {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;display: inline-block;max-width: 500px;padding: 4px;position: fixed;z-index: 300;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre-line;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%05%00%00%00%05%08%06%00%00%00%8Do%26%E5%00%00%004IDATx%DAe%8A%B1%0D%000%0C%C2%F2%2CK%96%BC%D0%8F9%81%88H%E9%D0%0E%96%C0%10%92%3E%02%80%5E%82%E4%A9*-%EEsw%C8%CC%11%EE%96w%D8%DC%E9*Eh%0C%151(%00%00%00%00IEND%AEB%60%82");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%05%00%00%00%05%08%06%00%00%00%8Do%26%E5%00%00%004IDATx%DAm%C7%C1%09%000%08C%D1%8C%ECE%C8E(%8E%EC%02)%1EZJ%F1%C1'%04%07I%E1%E5%EE%CAL%F5%A2%99%99%22%E2%D6%1FU%B5%FE0%D9x%A7%26Wz5%0E%D5%00%00%00%00IEND%AEB%60%82");}.ace_fold-widget.ace_closed {background-image: url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%03%00%00%00%06%08%06%00%00%00%06%E5%24%0C%00%00%009IDATx%DA5%CA%C1%09%000%08%03%C0%AC*(%3E%04%C1%0D%BA%B1%23%A4Uh%E0%20%81%C0%CC%F8%82%81%AA%A2%AArGfr%88%08%11%11%1C%DD%7D%E0%EE%5B%F6%F6%CB%B8%05Q%2F%E9tai%D9%00%00%00%00IEND%AEB%60%82");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}/*** Dark version for fold widgets*/.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-moz-transition: opacity 0.4s ease 0.05s;-webkit-transition: opacity 0.4s ease 0.05s;-o-transition: opacity 0.4s ease 0.05s;-ms-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-moz-transition: opacity 0.05s ease 0.05s;-webkit-transition: opacity 0.05s ease 0.05s;-o-transition: opacity 0.05s ease 0.05s;-ms-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;}.ace-tm .ace_cursor {border-left: 2px solid black;}.ace-tm .ace_overwrite-cursors .ace_cursor {border-left: 0px;border-bottom: 1px solid black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;border-radius: 2px;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style><script src="./Les threads_files/theme-monokai.js"></script><script src="./Les threads_files/mode-c_cpp.js"></script><style id="ace-monokai">.ace-monokai .ace_gutter {background: #2F3129;color: #8F908A}.ace-monokai .ace_print-margin {width: 1px;background: #555651}.ace-monokai {background-color: #272822;color: #F8F8F2}.ace-monokai .ace_cursor {border-left: 2px solid #F8F8F0}.ace-monokai .ace_overwrite-cursors .ace_cursor {border-left: 0px;border-bottom: 1px solid #F8F8F0}.ace-monokai .ace_marker-layer .ace_selection {background: #49483E}.ace-monokai.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #272822;border-radius: 2px}.ace-monokai .ace_marker-layer .ace_step {background: rgb(102, 82, 0)}.ace-monokai .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid #49483E}.ace-monokai .ace_marker-layer .ace_active-line {background: #202020}.ace-monokai .ace_gutter-active-line {background-color: #272727}.ace-monokai .ace_marker-layer .ace_selected-word {border: 1px solid #49483E}.ace-monokai .ace_invisible {color: #52524d}.ace-monokai .ace_entity.ace_name.ace_tag,.ace-monokai .ace_keyword,.ace-monokai .ace_meta.ace_tag,.ace-monokai .ace_storage {color: #F92672}.ace-monokai .ace_constant.ace_character,.ace-monokai .ace_constant.ace_language,.ace-monokai .ace_constant.ace_numeric,.ace-monokai .ace_constant.ace_other {color: #AE81FF}.ace-monokai .ace_invalid {color: #F8F8F0;background-color: #F92672}.ace-monokai .ace_invalid.ace_deprecated {color: #F8F8F0;background-color: #AE81FF}.ace-monokai .ace_support.ace_constant,.ace-monokai .ace_support.ace_function {color: #66D9EF}.ace-monokai .ace_fold {background-color: #A6E22E;border-color: #F8F8F2}.ace-monokai .ace_storage.ace_type,.ace-monokai .ace_support.ace_class,.ace-monokai .ace_support.ace_type {font-style: italic;color: #66D9EF}.ace-monokai .ace_entity.ace_name.ace_function,.ace-monokai .ace_entity.ace_other,.ace-monokai .ace_entity.ace_other.ace_attribute-name,.ace-monokai .ace_variable {color: #A6E22E}.ace-monokai .ace_variable.ace_parameter {font-style: italic;color: #FD971F}.ace-monokai .ace_string {color: #E6DB74}.ace-monokai .ace_comment {color: #75715E}.ace-monokai .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWPQ0FD0ZXBzd/wPAAjVAoxeSgNeAAAAAElFTkSuQmCC) right repeat-y;}</style><style id="ace_highlight">.ace_static_highlight {font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', 'Droid Sans Mono', monospace;font-size: 12px;}.ace_static_highlight .ace_gutter {width: 25px !important;display: block;float: left;text-align: right;padding: 0 3px 0 0;margin-right: 3px;position: static !important;}.ace_static_highlight .ace_line { clear: both; }.ace_static_highlight .ace_gutter-cell {-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;user-select: none;}.ace-monokai .ace_gutter {background: #2F3129;color: #8F908A}.ace-monokai .ace_print-margin {width: 1px;background: #555651}.ace-monokai {background-color: #272822;color: #F8F8F2}.ace-monokai .ace_cursor {border-left: 2px solid #F8F8F0}.ace-monokai .ace_overwrite-cursors .ace_cursor {border-left: 0px;border-bottom: 1px solid #F8F8F0}.ace-monokai .ace_marker-layer .ace_selection {background: #49483E}.ace-monokai.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #272822;border-radius: 2px}.ace-monokai .ace_marker-layer .ace_step {background: rgb(102, 82, 0)}.ace-monokai .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid #49483E}.ace-monokai .ace_marker-layer .ace_active-line {background: #202020}.ace-monokai .ace_gutter-active-line {background-color: #272727}.ace-monokai .ace_marker-layer .ace_selected-word {border: 1px solid #49483E}.ace-monokai .ace_invisible {color: #52524d}.ace-monokai .ace_entity.ace_name.ace_tag,.ace-monokai .ace_keyword,.ace-monokai .ace_meta.ace_tag,.ace-monokai .ace_storage {color: #F92672}.ace-monokai .ace_constant.ace_character,.ace-monokai .ace_constant.ace_language,.ace-monokai .ace_constant.ace_numeric,.ace-monokai .ace_constant.ace_other {color: #AE81FF}.ace-monokai .ace_invalid {color: #F8F8F0;background-color: #F92672}.ace-monokai .ace_invalid.ace_deprecated {color: #F8F8F0;background-color: #AE81FF}.ace-monokai .ace_support.ace_constant,.ace-monokai .ace_support.ace_function {color: #66D9EF}.ace-monokai .ace_fold {background-color: #A6E22E;border-color: #F8F8F2}.ace-monokai .ace_storage.ace_type,.ace-monokai .ace_support.ace_class,.ace-monokai .ace_support.ace_type {font-style: italic;color: #66D9EF}.ace-monokai .ace_entity.ace_name.ace_function,.ace-monokai .ace_entity.ace_other,.ace-monokai .ace_entity.ace_other.ace_attribute-name,.ace-monokai .ace_variable {color: #A6E22E}.ace-monokai .ace_variable.ace_parameter {font-style: italic;color: #FD971F}.ace-monokai .ace_string {color: #E6DB74}.ace-monokai .ace_comment {color: #75715E}.ace-monokai .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWPQ0FD0ZXBzd/wPAAjVAoxeSgNeAAAAAElFTkSuQmCC) right repeat-y;}</style><link rel="stylesheet" type="text/css" href="./Les threads_files/layers071.css" media="all"></head>
+
+    <body class="has-ad-banners course oc-body   ">
+        <!--[if lt IE 9]>
+            <div class="deprecated-message">
+                <p>Vous utilisez un navigateur obsolète, veuillez le <a href='http://browsehappy.com/'>mettre à jour</a>.</p>
+            </div>
+        <![endif]-->
+
+        <noscript>
+            &lt;div class="deprecated-message"&gt;
+                &lt;p&gt;Veuillez utiliser un &lt;a href='http://browsehappy.com/'&gt;navigateur internet moderne&lt;/a&gt; avec JavaScript activé pour naviguer sur OpenClassrooms.com&lt;/p&gt;
+            &lt;/div&gt;
+        </noscript>
+                
+
+<header id="oc-header" class="js-tabs-mobile mainHeader " data-widget="tabs">
+    <div class="mainHeader__wrapper">
+
+        <div class="mainHeader__topLine">
+                Toute l'équipe d'OpenClassrooms souhaite une excellente année à la communauté !
+
+        </div>
+
+        <div class="mainHeader__top">
+            <a href="http://openclassrooms.com/" class="mainHeader__logo" title="OpenClassrooms.com">OpenClassrooms.com</a>
+
+            
+<nav role="navigation" class="icoTabs  mainHeader__tabSet">
+    <span class="mainHeader__mobileNav">
+
+        
+        
+        <a class="js-tabs-tab  icoTabs__tab" href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-threads-3#tab-courseMenu">
+            <span class="icoTabs__inner--mobileRightSeparator">
+                <i class="icon-plus  icoTabs__icon"></i>
+            </span>
+        </a>
+
+        <a class="js-tabs-tab  icoTabs__tab  is-disabled" data-tabs-default="true" href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-threads-3#tab-searchMenu">
+            <span class="icoTabs__inner--mobileRightSeparator">
+                <i class="icon-search  icoTabs__icon"></i>
+            </span>
+        </a>
+
+        <a class="js-tabs-tab  icoTabs__tab" href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-threads-3#tab-main">
+            <i class="icon-menu  icoTabs__icon"></i>
+        </a>
+    </span>
+
+</nav>
+        </div>
+
+                <div class="js-tabs-content  mainHeader__content"></div>
+
+        <div class="mainHeader__content">
+            <div id="tab-main" class="mainHeader__tabs">
+                <nav role="navigation" class="mainTopNav">
+    <ul class="mainHeader__container  mainHeader__container--mainMenu">
+        <li class="mainHeader__containerItem">
+            <a class="mainTopNav__item" href="http://openclassrooms.com/courses">Cours</a>
+        </li>
+        <li class="mainHeader__containerItem">
+            <a class="mainTopNav__item" href="http://openclassrooms.com/learning-paths/">Parcours <span class="mainTopNav__new">Nouveau</span></a>
+
+        </li>
+        <li class="mainHeader__containerItem">
+            <a class="mainTopNav__item" href="http://openclassrooms.com/forum/">Forums</a>
+        </li>
+
+        <li class="mainHeader__containerItem">
+            <a class="mainTopNav__item" href="http://boutique.openclassrooms.com/boutique.html">Livres</a>
+        </li>
+
+                    <li class="mainHeader__containerItem">
+                <a class="mainTopNav__item" href="http://openclassrooms.com/etudes/">Études</a>
+            </li>
+            </ul>
+</nav>
+
+                <div class="mainHeader__contentInner">
+                    <div class="mainHeader__container  mainHeader__container--search">
+                         <div class="js-courseSearch  topSearchBox" data-widget="courseSearch">
+     <form tabindex="0" class="js-courseSearch-form  oc-form" action="http://openclassrooms.com/recherche/" method="get">
+         <div class="js-courseSearch-inputGroup oc-form__widget  inputGroup  topSearchBox__inner">
+             <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input type="search" class="js-courseSearch-input  oc-form__control inputGroup__input  topSearchBox__input ui-autocomplete-input" title="Rechercher" autocomplete="off" data-option_source="/components/courses/search?q=&lt;%= term %&gt;" placeholder="Rechercher" name="search">
+
+             <button class="js-courseSearch-button  oc-btn dark-btn  only-icon  inputGroup__button  topSearchBox__button" type="submit" title="Rechercher un cours">
+                 <i class="inputGroup__icon icon-search"></i>
+                 <i class="inputGroup__icon inputGroup__icon--load icon-spinner icon-spin"></i>
+             </button>
+         </div>
+     <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="display: none;"></ul></form>
+</div>
+                    </div>
+
+                                            <div class="mainHeader__container  mainHeader__container--separatorLarge"></div>
+                    
+
+
+                    
+                                            <div class="mainHeader__container  mainHeader__container--login">
+    <a class="oc-btn orange-alt-btn" href="http://openclassrooms.com/inscription/">
+        S'inscrire
+    </a>
+    <a class="oc-btn dark-btn" href="http://openclassrooms.com/login">
+        Se connecter
+    </a>
+</div>
+                                    </div>
+
+                <div class="mainHeader__containerItem--langSelector">
+                    <div class="js-popOut-header  popOut popOut--small" data-widget="popOut">
+    <span class="js-popOut-button  popOut__button">
+                    <a href="javascript:;" class="languageSelector__selected">Français</a>
+            </span>
+    <ul class="popOutList  popOut__content  popOutList--small">
+                    <li class="popOutList__item">
+                <a class="popOutList__link" href="http://openclassrooms.com/change-locale/de/GvI6Z_EEbP9h6jURMlikNzZspyWO5zWUEXAZDTUF89k">Deutsch</a>
+            </li>
+                    <li class="popOutList__item">
+                <a class="popOutList__link" href="http://openclassrooms.com/change-locale/en/GvI6Z_EEbP9h6jURMlikNzZspyWO5zWUEXAZDTUF89k">English</a>
+            </li>
+                    <li class="popOutList__item">
+                <a class="popOutList__link" href="http://openclassrooms.com/change-locale/zh/GvI6Z_EEbP9h6jURMlikNzZspyWO5zWUEXAZDTUF89k">中文</a>
+            </li>
+                <li class="popOutList__item  popOutList__item--noHover  with-padding">
+            <a class="oc-btn orange-alt-btn fullwidth smaller" href="https://www.transifex.com/organization/openclassrooms" target="_blank">
+                Aider à traduire
+            </a>
+        </li>
+    </ul>
+</div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+                
+                <script type="text/javascript" src="http://ads.ayads.co/ajs.php?zid=269"></script>
+
+                            
+
+        <div id="pre-main-part">
+            
+                <section class="inset no-padding">
+        <div class="centered">
+
+            <h6 class="accessibility-hidden">Fil d'Ariane</h6>
+
+            <nav class="breadcrumb" role="navigation">
+                <ul class="breadcrumbtrail">
+                                                                        <li class="home" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                                                                            <a href="http://openclassrooms.com/" itemprop="url">
+                                <span itemprop="title">Accueil</span>
+                            </a>
+                                                                            <div class="arrow-right"></div>
+                                                </li>
+                                                                        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                                                                            <a href="http://openclassrooms.com/courses" itemprop="url">
+                                <span itemprop="title">Cours</span>
+                            </a>
+                                                                            <div class="arrow-right"></div>
+                                                </li>
+                                                                        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                                                                            <a href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix?status=published" itemprop="url">
+                                <span itemprop="title">La programmation système en C sous Unix</span>
+                            </a>
+                                                                            <div class="arrow-right"></div>
+                                                </li>
+                                                                        <li class="current" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                                                                            Les threads
+                                                                        </li>
+                                    </ul>
+            </nav>
+        </div>
+    </section>
+
+
+
+                 
+    
+    <section class="advertise">
+
+        <h6 class="accessibility-hidden">Publicité</h6>
+
+        <div id="add-container-1350977194635-9">
+
+            
+            <!--
+                <div id="div-gpt-ad-1350977194635-9" class="megaban"></div>
+
+                                    <div id="div-gpt-ad-1350977284180-9" class="miniban"></div>
+                
+                <script type='text/javascript'>
+                    (function () {
+                        var mobileAdd = '1350977284180-9',
+                            add = '1350977194635-9';
+
+                        if (mobileAdd && window.innerWidth <= 728) {
+
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-' + mobileAdd);
+                            });
+
+                        } else {
+
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-' + add);
+                            });
+
+                        }
+                    })();
+                </script>
+            -->
+        </div>
+                <script type="text/javascript">
+            !document.getElementById('ayads-style')&&Array.prototype.slice.call(document.getElementById('add-container-1350977194635-9').childNodes).some(function(n){if(n.nodeType===8)document.write(n.nodeValue);});
+        </script>
+                <div id="div-gpt-ad-1350977194635-9" class="megaban"></div>
+
+                                    <div id="div-gpt-ad-1350977284180-9" class="miniban"></div>
+                
+                <script type="text/javascript">
+                    (function () {
+                        var mobileAdd = '1350977284180-9',
+                            add = '1350977194635-9';
+
+                        if (mobileAdd && window.innerWidth <= 728) {
+
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-' + mobileAdd);
+                            });
+
+                        } else {
+
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-' + add);
+                            });
+
+                        }
+                    })();
+                </script>
+            
+
+    </section>
+
+                            <!-- navigationTabs -->
+                <section class="alt-section no-padding no-border">
+                    <div class="centered">
+
+                        <h6 class="accessibility-hidden">menu secondaire</h6>
+
+                        <ul id="secondMenu" class="nav-tabs">
+                                                    </ul>
+                    </div>
+                </section>
+                <!-- END navigationTabs -->
+                    </div>
+
+        <main class="claire clearfix" role="main">
+                <article itemscope="" itemtype="http://schema.org/Article">
+        <header class="course-header ">
+            <div class="centered"><div class="course-header__topPart"><div class="course-header__imageContainer"><a href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix"><img itemprop="image" alt="La programmation système en C sous Unix" src="./Les threads_files/348411.jpg" class="course-header__image"></a></div><div class="course-header__info"><a itemprop="url" href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix"><h1>La programmation système en C sous Unix</h1></a><span class="course-header__updatedTime visible-l">Mis à jour le vendredi 6 décembre 2013</span></div></div></div><div class="course-header__details-container"><div class="centered"><div class="row"><div class="col12"><div class="course-header__details  iconBar"><div class="course-header__detailsGroup  course-header__detailsGroup--formats  iconBar__group"><ul data-option_popinselector="#popin-formats-availables" class="course-types iconBar__list js-course-formats-bar" data-widget="courseFormatsBar"><li class="iconBar__item  course-types__item  js-tooltip" title="Ce cours est visible gratuitement en ligne."><a href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix"><i class="icon-desktop  course-types__icon"></i><span class="course-header__format-current"></span></a></li><li class="iconBar__item  course-types__item iconBar__item--dimmed js-tooltip" title="Ce cours n&#39;est pas encore en vidéo."><span><i class="icon-video course-types__icon"></i></span></li><li class="iconBar__item  course-types__item iconBar__item--dimmed js-tooltip" title="Ce cours n&#39;existe pas encore en livre papier."><a href=""><i class="icon-book  course-types__icon"></i></a></li><li class="iconBar__item  course-types__item iconBar__item--dimmed js-tooltip" title="Ce cours n&#39;existe pas encore en eBook."><a href=""><i class="icon-ebook  course-types__icon"></i></a></li><li class="iconBar__item  course-types__item iconBar__item--dimmed js-tooltip" title="Vous ne pouvez pas encore obtenir de certificat de réussite à l&#39;issue de ce cours."><a href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-threads-3#" data-popin-selector="#popin-certifying" class="js-popin-activator"><i class="icon-badge  course-types__icon"></i></a></li><li class="iconBar__item  course-types__item iconBar__item--dimmed js-tooltip" title="Ce cours n&#39;est pas encore diplômant et ne vous permet pas d&#39;obtenir des crédits universitaires européens (ECTS)."><span><i class="icon-hat  course-types__icon"></i></span></li></ul></div><div class="course-header__detailsGroup  course-header__detailsGroup--info  iconBar__group"><ul class="iconBar__list"><li class="iconBar__item"><i class="icon-duration iconBar__icon"></i><span class="iconBar__label">4 heures</span></li><li class="iconBar__item"><i class="icon-level iconBar__icon"></i><span class="iconBar__label">Moyen</span></li></ul></div><div class="course-header__detailsGroup course-header__detailsGroup--licences iconBar__group"><a target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/2.0"><span class="iconBar__label">Licence</span><ul class="iconBar__list"><li class="iconBar__item"><i class="icon-cc iconBar__icon" title="CC"></i></li><li class="iconBar__item"><i class="icon-ccby iconBar__icon" title="BY"></i></li><li class="iconBar__item"><i class="icon-ccnc iconBar__icon" title="NC"></i></li><li class="iconBar__item"><i class="icon-ccnd iconBar__icon" title="ND"></i></li></ul></a></div></div></div></div></div></div>
+<div id="popin-formats-availables" class="popin popin--course-formats-availables">
+    <i class="popin__close-button icon-close js-close-button"></i>
+
+    <div class="course-types course-types--withSpace">
+                    <a class="course-types__item" href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix">
+                <i class="icon-desktop course-types__icon"></i>
+            </a>
+        
+        
+        
+        
+        
+            </div>
+
+            <p>Ce cours est visible <a href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix">gratuitement en ligne</a>.</p>
+    
+    
+    
+    
+    
+    
+
+    <a class="oc-btn orange-alt-btn js-close-button" href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-threads-3#">J'ai tout compris !</a>
+</div>
+                    </header>
+
+            <div class="relative js-sidebar-container">
+        
+<div class="centered static">
+
+    <div class="row">
+        <div class="col12 col11-s">
+            <nav class="timeline">
+    <div class="timeline__caption">
+        Les bases de la programmation système
+    </div>
+
+    
+</nav>
+        </div>
+    </div>
+
+    <h2 itemprop="name" class="part-title">Les threads</h2>
+
+    <section class="row space-bottom js-desktop-sticky-container relative">
+        <div class="col9 col11-s col__small-padding--right">
+            <div itemprop="articleBody" data-page-indentifier="/courses/la-programmation-systeme-en-c-sous-unix/les-threads-3" data-subscription-url="/components/course-subscription/1513891/subscribe" class="js-isRestrictablePage course-content js-course-container js-smilize ">
+                <p id="r-1514465" data-claire-element-id="1535650">Voici un chapitre à ne manquer sous aucun prétexte car c'est une des bases de la programmation système sous Unix : l'étude des <em>threads</em><em>Posix</em> (<em>Posix </em>est le nom d'une famille de standards qui indique un code standard).</p><div class="foldable" id="ui-id-2" data-widget="foldable"><h3 id="r-1514471" data-claire-element-id="1535656" class="foldable__button secondTitle js-foldable-button">Qu'est ce qu'un thread ?<i class="foldable__icon icon-next"></i></h3><div class="foldable__content"><p id="r-1514466" data-claire-element-id="1535651">Dans la plupart des systèmes d'exploitation, chaque processus possède un espace d'adressage et un <strong>thread</strong> de contrôle unique, le <strong>thread principal</strong>. Du point de vue programmation, ce dernier exécute le <code data-claire-semantic="c">main</code>.</p><p id="r-1514467" data-claire-element-id="1535652">Vous avez pu remarquer, lors de notre étude des processus, qu'en général, le système réserve un processus à chaque application, sauf quelques exceptions. Beaucoup de programmes exécutent plusieurs activités en parallèle, du moins en apparent parallélisme, comme nous l'avons vu précédemment. Comme à l'échelle des processus, certaines de ces activités peuvent se bloquer, et ainsi réserver ce blocage à un seul thread séquentiel, permettant par conséquent de ne pas stopper toute l'application.<br> Ensuite, il faut savoir que le principal avantage des threads par rapport aux processus, c'est la facilité et la rapidité de leur création. En effet, tous les threads d'un même processus partagent le même espace d'adressage, et donc toutes les variables. Cela évite donc l'allocation de tous ces espaces lors de la création, et il est à noter que, sur de nombreux systèmes, la création d'un thread est environ cent fois plus rapide que celle d'un processus.<br> Au-delà de la création, la superposition de l'exécution des activités dans une même application permet une importante accélération quant au fonctionnement de cette dernière.</p><p id="r-1514468" data-claire-element-id="1535653">Sachez également que la communication entre les threads est plus aisée que celle entre les processus, pour lesquels on doit utiliser des notions compliquées comme les tubes (voir chapitre suivant).</p><aside id="r-1514470" data-claire-element-id="1535655" data-claire-semantic="information"><p id="r-1514469" data-claire-element-id="1535654">Le mot « <em>thread</em> » est un terme anglais qui peut se traduire par « <em>fil d'exécution</em> ». L'appellation de « <em>processus léger</em> » est également utilisée.</p></aside></div></div><div class="foldable" id="ui-id-3" data-widget="foldable"><h3 id="r-1514478" data-claire-element-id="1535663" class="foldable__button secondTitle js-foldable-button">Compilation<i class="foldable__icon icon-next"></i></h3><div class="foldable__content"><p id="r-1514472" data-claire-element-id="1535657">Toutes les fonctions relatives aux <em>threads </em>sont incluses dans le fichier d'en-tête <code data-claire-semantic="c">&lt;pthread.h&gt;</code> et dans la bibliothèque <code data-claire-semantic="c">libpthread.a</code> (soit <samp>-lpthread</samp> à la compilation).</p><h5 id="r-1514477" data-claire-element-id="1535662">Exemple :</h5><p id="r-1514473" data-claire-element-id="1535658">Écrivez la ligne de commande qui vous permet de compiler votre programme sur les <em>threads </em>constitué d'un seul fichier <code data-claire-semantic="c">main.c</code> et avoir en sortie un exécutable nommé <code data-claire-semantic="c">monProgramme</code>.</p><p id="r-1514474" data-claire-element-id="1535659">Correction :</p><pre id="r-1514475" data-claire-element-id="1535660"><samp>gcc&nbsp;-lpthread&nbsp;main.c&nbsp;-o&nbsp;monProgramme</samp></pre><p id="r-1514476" data-claire-element-id="1535661">Et n'oubliez pas d'ajouter <code data-claire-semantic="c">#include &lt;pthread.h&gt;</code> au début de vos fichiers.</p></div></div><div class="foldable" id="ui-id-4" data-widget="foldable"><h3 id="r-1514511" data-claire-element-id="1535696" class="foldable__button secondTitle js-foldable-button">Manipulation des threads<i class="foldable__icon icon-next"></i></h3><div class="foldable__content"><h4 id="r-1514493" data-claire-element-id="1535678">Créer un thread</h4><p id="r-1514479" data-claire-element-id="1535664">Pour créer un thread, il faut déjà déclarer une variable le représentant. Celle-ci sera de type <code data-claire-semantic="c">pthread_t</code> (qui est, sur la plupart des systèmes, un <code data-claire-semantic="c">typedef</code> d'<code data-claire-semantic="c">unsigned long int</code>).<br> Ensuite, pour créer la tâche elle-même, il suffit d'utiliser la fonction :</p><pre id="r-1514480" data-claire-element-id="1535665" class="code-block"><code data-claire-semantic="c" data-widget="codeBlock"><div class="ace-monokai"><div class="ace_static_highlight"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">1</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;pthread.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">2</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">3</span><span class="ace_storage ace_type">int</span>&nbsp;<span class="ace_identifier">pthread_create</span><span class="ace_paren ace_lparen">(</span><span class="ace_identifier">pthread_t</span>&nbsp;<span class="ace_keyword ace_operator">*</span>&nbsp;<span class="ace_identifier">thread</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_identifier">pthread_attr_t</span>&nbsp;<span class="ace_keyword ace_operator">*</span>&nbsp;<span class="ace_identifier">attr</span><span class="ace_punctuation ace_operator">,</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">4</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_storage ace_type">void</span>&nbsp;<span class="ace_keyword ace_operator">*</span><span class="ace_paren ace_lparen">(</span><span class="ace_keyword ace_operator">*</span><span class="ace_identifier">start_routine</span><span class="ace_paren ace_rparen">)</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span>&nbsp;<span class="ace_keyword ace_operator">*</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_storage ace_type">void</span>&nbsp;<span class="ace_keyword ace_operator">*</span><span class="ace_identifier">arg</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div></div></div></code><textarea wrap="off" class="code-block--raw-code"></textarea></pre><p id="r-1514481" data-claire-element-id="1535666">Ce prototype est un peu compliqué, c'est pourquoi nous allons récapituler ensemble.</p><ul id="r-1514492" data-claire-element-id="1535677"><li id="r-1514483" data-claire-element-id="1535668"><p id="r-1514482" data-claire-element-id="1535667">La fonction renvoie une valeur de type <code data-claire-semantic="c">int</code> : 0 si la création a été réussie ou une autre valeur si il y a eu une erreur.</p></li><li id="r-1514485" data-claire-element-id="1535670"><p id="r-1514484" data-claire-element-id="1535669">Le premier argument est un pointeur vers l'identifiant du thread (valeur de type <code data-claire-semantic="c">pthread_t</code>).</p></li><li id="r-1514487" data-claire-element-id="1535672"><p id="r-1514486" data-claire-element-id="1535671">Le second argument désigne les attributs du thread. Vous pouvez choisir de mettre le thread en état joignable (par défaut) ou détaché, et choisir sa politique d'ordonnancement (usuelle, temps-réel...). Dans nos exemple, on mettra généralement NULL.</p></li><li id="r-1514489" data-claire-element-id="1535674"><p id="r-1514488" data-claire-element-id="1535673">Le troisième argument est un pointeur vers la fonction à exécuter dans le thread. Cette dernière devra être de la forme <code data-claire-semantic="c">void *fonction(void* arg)</code> et contiendra le code à exécuter par le thread.</p></li><li id="r-1514491" data-claire-element-id="1535676"><p id="r-1514490" data-claire-element-id="1535675">Enfin, le quatrième et dernier argument est l'argument à passer au thread.</p></li></ul><h4 id="r-1514497" data-claire-element-id="1535682">Supprimer un thread</h4><p id="r-1514494" data-claire-element-id="1535679">Et qui dit créer dit supprimer à la fin de l'utilisation.<br> Cette fois, ce n'est pas une fonction casse-tête :</p><pre id="r-1514495" data-claire-element-id="1535680" class="code-block"><code data-claire-semantic="c" data-widget="codeBlock"><div class="ace-monokai"><div class="ace_static_highlight"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">1</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;pthread.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">2</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">3</span><span class="ace_storage ace_type">void</span>&nbsp;<span class="ace_identifier">pthread_exit</span><span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span>&nbsp;<span class="ace_keyword ace_operator">*</span><span class="ace_identifier">ret</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div></div></div></code><textarea wrap="off" class="code-block--raw-code"></textarea></pre><p id="r-1514496" data-claire-element-id="1535681">Elle prend en argument la valeur qui doit être retournée par le thread, et doit être placée en dernière position dans la fonction concernée.</p><h4 id="r-1514501" data-claire-element-id="1535686">Première application</h4><p id="r-1514498" data-claire-element-id="1535683">Voici un premier code qui réutilise toutes les notions des threads que nous avons vu jusque là.</p><pre id="r-1514499" data-claire-element-id="1535684" class="code-block"><code data-claire-semantic="c" data-widget="codeBlock"><div class="ace-monokai"><div class="ace_static_highlight"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">1</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;stdio.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">2</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;stdlib.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">3</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;unistd.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">4</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;pthread.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">5</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">6</span><span class="ace_storage ace_type">void</span>&nbsp;<span class="ace_keyword ace_operator">*</span><span class="ace_identifier">thread_1</span><span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span>&nbsp;<span class="ace_keyword ace_operator">*</span><span class="ace_identifier">arg</span><span class="ace_paren ace_rparen">)</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">7</span><span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">8</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_support ace_function ace_C99 ace_c">printf</span><span class="ace_paren ace_lparen">(</span><span class="ace_string">"Nous&nbsp;sommes&nbsp;dans&nbsp;le&nbsp;thread.\n"</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">9</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_comment">/*&nbsp;Pour&nbsp;enlever&nbsp;le&nbsp;warning&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span><span class="ace_paren ace_rparen">)</span>&nbsp;<span class="ace_identifier">arg</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">12</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_exit</span><span class="ace_paren ace_lparen">(</span><span class="ace_constant ace_language">NULL</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">13</span><span class="ace_paren ace_rparen">}</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">14</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">15</span><span class="ace_storage ace_type">int</span>&nbsp;<span class="ace_identifier">main</span><span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span><span class="ace_paren ace_rparen">)</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">16</span><span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">17</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_t</span>&nbsp;<span class="ace_identifier">thread1</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">18</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">19</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_support ace_function ace_C99 ace_c">printf</span><span class="ace_paren ace_lparen">(</span><span class="ace_string">"Avant&nbsp;la&nbsp;création&nbsp;du&nbsp;thread.\n"</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">20</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">21</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_keyword ace_control">if</span><span class="ace_paren ace_lparen">(</span><span class="ace_identifier">pthread_create</span><span class="ace_paren ace_lparen">(</span><span class="ace_keyword ace_operator">&amp;</span><span class="ace_identifier">thread1</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_constant ace_language">NULL</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_identifier">thread_1</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_constant ace_language">NULL</span><span class="ace_paren ace_rparen">)</span>&nbsp;<span class="ace_keyword ace_operator">==</span>&nbsp;<span class="ace_constant ace_numeric">-1</span><span class="ace_paren ace_rparen">)</span>&nbsp;<span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">22</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_support ace_function ace_C99 ace_c">perror</span><span class="ace_paren ace_lparen">(</span><span class="ace_string">"pthread_create"</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">23</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_keyword ace_control">return</span>&nbsp;<span class="ace_identifier">EXIT_FAILURE</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">24</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_paren ace_rparen">}</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">25</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">26</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_support ace_function ace_C99 ace_c">printf</span><span class="ace_paren ace_lparen">(</span><span class="ace_string">"Après&nbsp;la&nbsp;création&nbsp;du&nbsp;thread.\n"</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">27</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">28</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_keyword ace_control">return</span>&nbsp;<span class="ace_identifier">EXIT_SUCCESS</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">29</span><span class="ace_paren ace_rparen">}</span></div></div></div></code><textarea wrap="off" class="code-block--raw-code"></textarea></pre><p id="r-1514500" data-claire-element-id="1535685">On compile, on exécute. Et là, zut... Le résultat, dans le meilleur des cas, affiche le message de thread en dernier. Dans le pire des cas, celui-ci ne s'affiche même pas (ce qui veut dire que le <code data-claire-semantic="c">return</code> s'est exécuté avant le thread...).<br> Ce qui normal, puisqu'en théorie, comme avec les processus, le thread principal ne va pas attendre de lui-même que le thread se termine avant d'exécuter le reste de son code.<br> Par conséquent, il va falloir lui en faire la demande. <img alt=":zorro:" class="smilies" src="./Les threads_files/zorro.png"> Pour cela, Dieu pthread a créé la fonction <code data-claire-semantic="c">pthread_join</code>.</p><h4 id="r-1514505" data-claire-element-id="1535690">Attendre la fin d'un thread</h4><p id="r-1514502" data-claire-element-id="1535687">Voici le prototype de cette fameuse fonction :</p><pre id="r-1514503" data-claire-element-id="1535688" class="code-block"><code data-claire-semantic="c" data-widget="codeBlock"><div class="ace-monokai"><div class="ace_static_highlight"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">1</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;pthread.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">2</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">3</span><span class="ace_storage ace_type">int</span>&nbsp;<span class="ace_identifier">pthread_join</span><span class="ace_paren ace_lparen">(</span><span class="ace_identifier">pthread_t</span>&nbsp;<span class="ace_identifier">th</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_storage ace_type">void</span>&nbsp;<span class="ace_keyword ace_operator">**</span><span class="ace_identifier">thread_return</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div></div></div></code><textarea wrap="off" class="code-block--raw-code"></textarea></pre><p id="r-1514504" data-claire-element-id="1535689">Elle prend donc en paramètre l'identifiant du thread et son second paramètre, un pointeur, permet de récupérer la valeur retournée par la fonction dans laquelle s'exécute le thread (c'est-à-dire l'argument de <code data-claire-semantic="c">pthread_exit</code>).</p><h4 id="r-1514510" data-claire-element-id="1535695">Exercice résumé</h4><p id="r-1514506" data-claire-element-id="1535691">Écrivez un programme qui crée un thread demandant un nombre à l'utilisateur, l'incrémentant une fois puis l'affichant dans le main.</p><pre id="r-1514507" data-claire-element-id="1535692" class="code-block"><code data-claire-semantic="c" data-widget="codeBlock"><div class="ace-monokai"><div class="ace_static_highlight"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">1</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;stdio.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">2</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;stdlib.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">3</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;unistd.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">4</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;pthread.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">5</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">6</span><span class="ace_storage ace_type">void</span>&nbsp;<span class="ace_keyword ace_operator">*</span><span class="ace_identifier">thread_1</span><span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span>&nbsp;<span class="ace_keyword ace_operator">*</span><span class="ace_identifier">arg</span><span class="ace_paren ace_rparen">)</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">7</span><span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">8</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_support ace_function ace_C99 ace_c">printf</span><span class="ace_paren ace_lparen">(</span><span class="ace_string">"Nous&nbsp;sommes&nbsp;dans&nbsp;le&nbsp;thread.\n"</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">9</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_comment">/*&nbsp;Pour&nbsp;enlever&nbsp;le&nbsp;warning&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span><span class="ace_paren ace_rparen">)</span>&nbsp;<span class="ace_identifier">arg</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">12</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_exit</span><span class="ace_paren ace_lparen">(</span><span class="ace_constant ace_language">NULL</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">13</span><span class="ace_paren ace_rparen">}</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">14</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">15</span><span class="ace_storage ace_type">int</span>&nbsp;<span class="ace_identifier">main</span><span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span><span class="ace_paren ace_rparen">)</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">16</span><span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">17</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_t</span>&nbsp;<span class="ace_identifier">thread1</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">18</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">19</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_support ace_function ace_C99 ace_c">printf</span><span class="ace_paren ace_lparen">(</span><span class="ace_string">"Avant&nbsp;la&nbsp;création&nbsp;du&nbsp;thread.\n"</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">20</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">21</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_keyword ace_control">if</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_identifier">pthread_create</span><span class="ace_paren ace_lparen">(</span><span class="ace_keyword ace_operator">&amp;</span><span class="ace_identifier">thread1</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_constant ace_language">NULL</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_identifier">thread_1</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_constant ace_language">NULL</span><span class="ace_paren ace_rparen">))</span>&nbsp;<span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">22</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_support ace_function ace_C99 ace_c">perror</span><span class="ace_paren ace_lparen">(</span><span class="ace_string">"pthread_create"</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">23</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_keyword ace_control">return</span>&nbsp;<span class="ace_identifier">EXIT_FAILURE</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">24</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_paren ace_rparen">}</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">25</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">26</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_keyword ace_control">if</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_identifier">pthread_join</span><span class="ace_paren ace_lparen">(</span><span class="ace_identifier">thread1</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_constant ace_language">NULL</span><span class="ace_paren ace_rparen">))</span>&nbsp;<span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">27</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_support ace_function ace_C99 ace_c">perror</span><span class="ace_paren ace_lparen">(</span><span class="ace_string">"pthread_join"</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">28</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_keyword ace_control">return</span>&nbsp;<span class="ace_identifier">EXIT_FAILURE</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">29</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_paren ace_rparen">}</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">30</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">31</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_support ace_function ace_C99 ace_c">printf</span><span class="ace_paren ace_lparen">(</span><span class="ace_string">"Après&nbsp;la&nbsp;création&nbsp;du&nbsp;thread.\n"</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">32</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">33</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_keyword ace_control">return</span>&nbsp;<span class="ace_identifier">EXIT_SUCCESS</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">34</span><span class="ace_paren ace_rparen">}</span></div></div></div></code><textarea wrap="off" class="code-block--raw-code"></textarea></pre><p id="r-1514508" data-claire-element-id="1535693">Et le résultat est enfin uniforme :</p><pre id="r-1514509" data-claire-element-id="1535694"><samp>Avant&nbsp;la&nbsp;création&nbsp;du&nbsp;thread.
+Nous&nbsp;sommes&nbsp;dans&nbsp;le&nbsp;thread.
+Après&nbsp;la&nbsp;création&nbsp;du&nbsp;thread.</samp></pre></div></div><div class="foldable" id="ui-id-5" data-widget="foldable"><h3 id="r-1514532" data-claire-element-id="1535717" class="foldable__button secondTitle js-foldable-button">Exclusions mutuelles<i class="foldable__icon icon-next"></i></h3><div class="foldable__content"><h4 id="r-1514513" data-claire-element-id="1535698">Problématique</h4><p id="r-1514512" data-claire-element-id="1535697">Avec les threads, toutes les variables sont partagées : c'est la <strong>mémoire partagée</strong>.<br> Mais cela pose des problèmes. En effet, quand deux threads cherchent à modifier deux variables en même temps, que se passe-t-il ? Et si un thread lit une variable quand un autre thread la modifie ?<br> C'est assez problématique. Par conséquent, nous allons voir une mécanisme de synchronisation : les <strong>mutex</strong>, un des outils permettant l'<strong>exclusion mutuelle</strong>.</p><h4 id="r-1514519" data-claire-element-id="1535704">Les mutex</h4><p id="r-1514514" data-claire-element-id="1535699">Concrètement, un <strong>mutex</strong> est en C une variable de type <code data-claire-semantic="c">pthread_mutex_t</code>. Elle va nous servir de verrou, pour nous permettre de protéger des données. Ce verrou peut donc prendre deux états : <strong>disponible</strong> et <strong>verrouillé</strong>. <br> Quand un thread a accès à une variable protégée par un mutex, on dit qu'<em>il tient le mutex</em>. Bien évidemment, il ne peut y avoir qu'un seul thread qui tient le mutex en même temps.</p><p id="r-1514515" data-claire-element-id="1535700">Le problème, c'est qu'il faut que le mutex soit accessible en même temps que la variable et dans tout le fichier (vu que différents threads s'exécutent dans différentes fonctions). La solution la plus simple consiste à déclarer les mutex en variable globale. Mais nous ne sommes pas des barbares ! <img alt=":pirate:" class="smilies" src="./Les threads_files/pirate.png"> Par conséquent, j'ai choisi de vous montrer une autre solution : déclarer le mutex dans une structure avec la donnée à protéger.<br> Allez, un petit exemple ne vous fera pas de mal :</p><pre id="r-1514516" data-claire-element-id="1535701" class="code-block"><code data-claire-semantic="c" data-widget="codeBlock"><div class="ace-monokai"><div class="ace_static_highlight"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">1</span><span class="ace_storage ace_type">typedef</span>&nbsp;<span class="ace_storage ace_type">struct</span>&nbsp;<span class="ace_identifier">data</span>&nbsp;<span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">2</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_storage ace_type">int</span>&nbsp;<span class="ace_identifier">var</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">3</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_mutex_t</span>&nbsp;<span class="ace_identifier">mutex</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">4</span><span class="ace_paren ace_rparen">}</span>&nbsp;<span class="ace_identifier">data</span><span class="ace_punctuation ace_operator">;</span></div></div></div></code><textarea wrap="off" class="code-block--raw-code"></textarea></pre><p id="r-1514517" data-claire-element-id="1535702">Ainsi, nous pourrons passer la structure en paramètre à nos threads, grâce à la fonction <code data-claire-semantic="c">pthread_create</code>. <img alt=";)" class="smilies" src="./Les threads_files/clin.png"></p><p id="r-1514518" data-claire-element-id="1535703">Passons à la pratique : comment manipuler les mutex grâce à pthread ?</p><h4 id="r-1514522" data-claire-element-id="1535707">Initialiser un mutex</h4><p id="r-1514520" data-claire-element-id="1535705">Conventionnellement, on initialise un mutex avec la valeur de la constante PTHREAD_MUTEX_INITIALIZER, déclarée dans <code data-claire-semantic="c">pthread.h</code>.</p><pre id="r-1514521" data-claire-element-id="1535706" class="code-block"><code data-claire-semantic="c" data-widget="codeBlock"><div class="ace-monokai"><div class="ace_static_highlight"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">1</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;stdlib.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">2</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;pthread.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">3</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">4</span><span class="ace_storage ace_type">typedef</span>&nbsp;<span class="ace_storage ace_type">struct</span>&nbsp;<span class="ace_identifier">data</span>&nbsp;<span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">5</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_storage ace_type">int</span>&nbsp;<span class="ace_identifier">var</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_mutex_t</span>&nbsp;<span class="ace_identifier">mutex</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">7</span><span class="ace_paren ace_rparen">}</span>&nbsp;<span class="ace_identifier">data</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">8</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">9</span><span class="ace_storage ace_type">int</span>&nbsp;<span class="ace_identifier">main</span><span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span><span class="ace_paren ace_rparen">)</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">10</span><span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">data</span>&nbsp;<span class="ace_identifier">new_data</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">12</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">13</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">new_data</span><span class="ace_punctuation ace_operator">.</span><span class="ace_identifier">mutex</span>&nbsp;<span class="ace_keyword ace_operator">=</span>&nbsp;<span class="ace_identifier">PTHREAD_MUTEX_INITIALIZER</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">14</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">15</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_keyword ace_control">return</span>&nbsp;<span class="ace_identifier">EXIT_SUCCESS</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">16</span><span class="ace_paren ace_rparen">}</span></div></div></div></code><textarea wrap="off" class="code-block--raw-code"></textarea></pre><h4 id="r-1514525" data-claire-element-id="1535710">Verrouiller un mutex</h4><p id="r-1514523" data-claire-element-id="1535708">L'étape suivante consiste à établir une <strong>zone critique</strong>, c'est-à-dire la zone où plusieurs threads ont l'occasion de modifier ou de lire une même variable en même temps.<br> Une fois cela fait, on verrouille le mutex grâce à la fonction :</p><pre id="r-1514524" data-claire-element-id="1535709" class="code-block"><code data-claire-semantic="c" data-widget="codeBlock"><div class="ace-monokai"><div class="ace_static_highlight"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">1</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;pthread.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">2</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">3</span><span class="ace_storage ace_type">int</span>&nbsp;<span class="ace_identifier">pthread_mutex_lock</span><span class="ace_paren ace_lparen">(</span><span class="ace_identifier">pthread_mutex_t</span>&nbsp;<span class="ace_keyword ace_operator">*</span><span class="ace_identifier">mut</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div></div></div></code><textarea wrap="off" class="code-block--raw-code"></textarea></pre><h4 id="r-1514528" data-claire-element-id="1535713">Déverrouiller un mutex</h4><p id="r-1514526" data-claire-element-id="1535711">A la fin de la zone critique, il suffit de déverrouiller le mutex.</p><pre id="r-1514527" data-claire-element-id="1535712" class="code-block"><code data-claire-semantic="c" data-widget="codeBlock"><div class="ace-monokai"><div class="ace_static_highlight"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">1</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;pthread.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">2</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">3</span><span class="ace_storage ace_type">int</span>&nbsp;<span class="ace_identifier">pthread_mutex_unlock</span><span class="ace_paren ace_lparen">(</span><span class="ace_identifier">pthread_mutex_t</span>&nbsp;<span class="ace_keyword ace_operator">*</span><span class="ace_identifier">mut</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div></div></div></code><textarea wrap="off" class="code-block--raw-code"></textarea></pre><h4 id="r-1514531" data-claire-element-id="1535716">Détruire un mutex</h4><p id="r-1514529" data-claire-element-id="1535714">Une fois le travail du mutex terminé, on peut le détruire :</p><pre id="r-1514530" data-claire-element-id="1535715" class="code-block"><code data-claire-semantic="c" data-widget="codeBlock"><div class="ace-monokai"><div class="ace_static_highlight"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">1</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;pthread.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">2</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">3</span><span class="ace_storage ace_type">int</span>&nbsp;<span class="ace_identifier">pthread_mutex_destroy</span><span class="ace_paren ace_lparen">(</span><span class="ace_identifier">pthread_mutex_t</span>&nbsp;<span class="ace_keyword ace_operator">*</span><span class="ace_identifier">mut</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div></div></div></code><textarea wrap="off" class="code-block--raw-code"></textarea></pre></div></div><div class="foldable" id="ui-id-6" data-widget="foldable"><h3 id="r-1514566" data-claire-element-id="1535751" class="foldable__button secondTitle js-foldable-button">Les conditions<i class="foldable__icon icon-next"></i></h3><div class="foldable__content"><p id="r-1514533" data-claire-element-id="1535718">Lorsqu'un <em>thread </em>doit patienter jusqu'à ce qu'un événement survienne dans un autre <em>thread</em>, on emploie une technique appelée la condition.</p><p id="r-1514534" data-claire-element-id="1535719">Quand un <em>thread </em>est en attente d'une condition, il reste bloqué tant que celle-ci n'est pas réalisée par un autre <em>thread</em>.</p><p id="r-1514535" data-claire-element-id="1535720">Comme avec les <em>mutex</em>, on déclare la condition en variable globale, de cette manière :</p><pre id="r-1514536" data-claire-element-id="1535721" class="code-block"><code data-claire-semantic="c" data-widget="codeBlock"><div class="ace-monokai"><div class="ace_static_highlight"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">1</span><span class="ace_identifier">pthread_cond_t</span>&nbsp;<span class="ace_identifier">nomCondition</span>&nbsp;<span class="ace_keyword ace_operator">=</span>&nbsp;<span class="ace_identifier">PTHREAD_COND_INITIALIZER</span><span class="ace_punctuation ace_operator">;</span></div></div></div></code><textarea wrap="off" class="code-block--raw-code"></textarea></pre><p id="r-1514537" data-claire-element-id="1535722">Pour attendre une condition, il faut utiliser un <em>mutex </em>:</p><pre id="r-1514538" data-claire-element-id="1535723" class="code-block"><code data-claire-semantic="c" data-widget="codeBlock"><div class="ace-monokai"><div class="ace_static_highlight"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">1</span><span class="ace_storage ace_type">int</span>&nbsp;<span class="ace_identifier">pthread_cond_wait</span><span class="ace_paren ace_lparen">(</span><span class="ace_identifier">pthread_cond_t</span>&nbsp;<span class="ace_keyword ace_operator">*</span><span class="ace_identifier">nomCondition</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_identifier">pthread_mutex_t</span>&nbsp;<span class="ace_keyword ace_operator">*</span><span class="ace_identifier">nomMutex</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div></div></div></code><textarea wrap="off" class="code-block--raw-code"></textarea></pre><p id="r-1514539" data-claire-element-id="1535724">Pour réveiller un <em>thread </em>en attente d'une condition, on utilise la fonction :</p><pre id="r-1514540" data-claire-element-id="1535725" class="code-block"><code data-claire-semantic="c" data-widget="codeBlock"><div class="ace-monokai"><div class="ace_static_highlight"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">1</span><span class="ace_storage ace_type">int</span>&nbsp;<span class="ace_identifier">pthread_cond_signal</span><span class="ace_paren ace_lparen">(</span><span class="ace_identifier">pthread_cond_t</span>&nbsp;<span class="ace_keyword ace_operator">*</span><span class="ace_identifier">nomCondition</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div></div></div></code><textarea wrap="off" class="code-block--raw-code"></textarea></pre><h5 id="r-1514565" data-claire-element-id="1535750">Exemple :</h5><p id="r-1514541" data-claire-element-id="1535726">Créez un code qui crée deux <em>threads </em>: un qui incrémente une variable compteur par un nombre tiré au hasard entre 0 et 10, et l'autre qui affiche un message lorsque la variable compteur dépasse 20.</p><p id="r-1514542" data-claire-element-id="1535727">Correction :</p><pre id="r-1514543" data-claire-element-id="1535728" class="code-block"><code data-claire-semantic="c" data-widget="codeBlock"><div class="ace-monokai"><div class="ace_static_highlight"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">1</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;stdio.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">2</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;stdlib.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">3</span><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&nbsp;&lt;pthread.h&gt;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">4</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">5</span><span class="ace_identifier">pthread_cond_t</span>&nbsp;<span class="ace_identifier">condition</span>&nbsp;<span class="ace_keyword ace_operator">=</span>&nbsp;<span class="ace_identifier">PTHREAD_COND_INITIALIZER</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;Création&nbsp;de&nbsp;la&nbsp;condition&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">6</span><span class="ace_identifier">pthread_mutex_t</span>&nbsp;<span class="ace_identifier">mutex</span>&nbsp;<span class="ace_keyword ace_operator">=</span>&nbsp;<span class="ace_identifier">PTHREAD_MUTEX_INITIALIZER</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;Création&nbsp;du&nbsp;mutex&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">7</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">8</span><span class="ace_storage ace_type">void</span><span class="ace_keyword ace_operator">*</span>&nbsp;<span class="ace_identifier">threadAlarme</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span><span class="ace_keyword ace_operator">*</span>&nbsp;<span class="ace_identifier">arg</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">9</span><span class="ace_storage ace_type">void</span><span class="ace_keyword ace_operator">*</span>&nbsp;<span class="ace_identifier">threadCompteur</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span><span class="ace_keyword ace_operator">*</span>&nbsp;<span class="ace_identifier">arg</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">10</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">11</span><span class="ace_storage ace_type">int</span>&nbsp;<span class="ace_identifier">main</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span><span class="ace_paren ace_rparen">)</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">12</span><span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">13</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_t</span>&nbsp;<span class="ace_identifier">monThreadCompteur</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">14</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_t</span>&nbsp;<span class="ace_identifier">monThreadAlarme</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">15</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">16</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_create</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_keyword ace_operator">&amp;</span><span class="ace_identifier">monThreadCompteur</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_constant ace_language">NULL</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_identifier">threadCompteur</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span><span class="ace_keyword ace_operator">*</span><span class="ace_paren ace_rparen">)</span><span class="ace_constant ace_language">NULL</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">17</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_create</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_keyword ace_operator">&amp;</span><span class="ace_identifier">monThreadAlarme</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_constant ace_language">NULL</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_identifier">threadAlarme</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span><span class="ace_keyword ace_operator">*</span><span class="ace_paren ace_rparen">)</span><span class="ace_constant ace_language">NULL</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;Création&nbsp;des&nbsp;threads&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">18</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">19</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_join</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_identifier">monThreadCompteur</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_constant ace_language">NULL</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">20</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_join</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_identifier">monThreadAlarme</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_constant ace_language">NULL</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;Attente&nbsp;de&nbsp;la&nbsp;fin&nbsp;des&nbsp;threads&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">21</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">22</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_keyword ace_control">return</span>&nbsp;<span class="ace_constant ace_numeric">0</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">23</span><span class="ace_paren ace_rparen">}</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">24</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">25</span><span class="ace_storage ace_type">void</span><span class="ace_keyword ace_operator">*</span>&nbsp;<span class="ace_identifier">threadCompteur</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span><span class="ace_keyword ace_operator">*</span>&nbsp;<span class="ace_identifier">arg</span><span class="ace_paren ace_rparen">)</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">26</span><span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">27</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_storage ace_type">int</span>&nbsp;<span class="ace_identifier">compteur</span>&nbsp;<span class="ace_keyword ace_operator">=</span>&nbsp;<span class="ace_constant ace_numeric">0</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_identifier">nombre</span>&nbsp;<span class="ace_keyword ace_operator">=</span>&nbsp;<span class="ace_constant ace_numeric">0</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">28</span>&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">29</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_support ace_function ace_C99 ace_c">srand</span><span class="ace_paren ace_lparen">(</span><span class="ace_support ace_function ace_C99 ace_c">time</span><span class="ace_paren ace_lparen">(</span><span class="ace_constant ace_language">NULL</span><span class="ace_paren ace_rparen">))</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">30</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">31</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_keyword ace_control">while</span><span class="ace_paren ace_lparen">(</span><span class="ace_constant ace_numeric">1</span><span class="ace_paren ace_rparen">)</span>&nbsp;<span class="ace_comment">/*&nbsp;Boucle&nbsp;infinie&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">32</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">33</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">nombre</span>&nbsp;<span class="ace_keyword ace_operator">=</span>&nbsp;<span class="ace_support ace_function ace_C99 ace_c">rand</span><span class="ace_paren ace_lparen">(</span><span class="ace_paren ace_rparen">)</span><span class="ace_keyword ace_operator">%</span><span class="ace_constant ace_numeric">10</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;On&nbsp;tire&nbsp;un&nbsp;nombre&nbsp;entre&nbsp;0&nbsp;et&nbsp;10&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">34</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">compteur</span>&nbsp;<span class="ace_keyword ace_operator">+=</span>&nbsp;<span class="ace_identifier">nombre</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;On&nbsp;ajoute&nbsp;ce&nbsp;nombre&nbsp;à&nbsp;la&nbsp;variable&nbsp;compteur&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">35</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">36</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_support ace_function ace_C99 ace_c">printf</span><span class="ace_paren ace_lparen">(</span><span class="ace_string">"\n%d"</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_identifier">compteur</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">37</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">38</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_keyword ace_control">if</span><span class="ace_paren ace_lparen">(</span><span class="ace_identifier">compteur</span>&nbsp;<span class="ace_keyword ace_operator">&gt;=</span>&nbsp;<span class="ace_constant ace_numeric">20</span><span class="ace_paren ace_rparen">)</span>&nbsp;<span class="ace_comment">/*&nbsp;Si&nbsp;compteur&nbsp;est&nbsp;plus&nbsp;grand&nbsp;ou&nbsp;égal&nbsp;à&nbsp;20&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">39</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">40</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_mutex_lock</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_keyword ace_operator">&amp;</span><span class="ace_identifier">mutex</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;On&nbsp;verrouille&nbsp;le&nbsp;mutex&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">41</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_cond_signal</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_keyword ace_operator">&amp;</span><span class="ace_identifier">condition</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;On&nbsp;délivre&nbsp;le&nbsp;signal&nbsp;:&nbsp;condition&nbsp;remplie&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">42</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_mutex_unlock</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_keyword ace_operator">&amp;</span><span class="ace_identifier">mutex</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;On&nbsp;déverrouille&nbsp;le&nbsp;mutex&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">43</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">44</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">compteur</span>&nbsp;<span class="ace_keyword ace_operator">=</span>&nbsp;<span class="ace_constant ace_numeric">0</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;On&nbsp;remet&nbsp;la&nbsp;variable&nbsp;compteur&nbsp;à&nbsp;0&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">45</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_paren ace_rparen">}</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">46</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">47</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">sleep</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_constant ace_numeric">1</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;On&nbsp;laisse&nbsp;1&nbsp;seconde&nbsp;de&nbsp;repos&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">48</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_paren ace_rparen">}</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">49</span>&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">50</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_exit</span><span class="ace_paren ace_lparen">(</span><span class="ace_constant ace_language">NULL</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;Fin&nbsp;du&nbsp;thread&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">51</span><span class="ace_paren ace_rparen">}</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">52</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">53</span><span class="ace_storage ace_type">void</span><span class="ace_keyword ace_operator">*</span>&nbsp;<span class="ace_identifier">threadAlarme</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_storage ace_type">void</span><span class="ace_keyword ace_operator">*</span>&nbsp;<span class="ace_identifier">arg</span><span class="ace_paren ace_rparen">)</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">54</span><span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">55</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_keyword ace_control">while</span><span class="ace_paren ace_lparen">(</span><span class="ace_constant ace_numeric">1</span><span class="ace_paren ace_rparen">)</span>&nbsp;<span class="ace_comment">/*&nbsp;Boucle&nbsp;infinie&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">56</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_paren ace_lparen">{</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">57</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_mutex_lock</span><span class="ace_paren ace_lparen">(</span><span class="ace_keyword ace_operator">&amp;</span><span class="ace_identifier">mutex</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;On&nbsp;verrouille&nbsp;le&nbsp;mutex&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">58</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_cond_wait</span>&nbsp;<span class="ace_paren ace_lparen">(</span><span class="ace_keyword ace_operator">&amp;</span><span class="ace_identifier">condition</span><span class="ace_punctuation ace_operator">,</span>&nbsp;<span class="ace_keyword ace_operator">&amp;</span><span class="ace_identifier">mutex</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;On&nbsp;attend&nbsp;que&nbsp;la&nbsp;condition&nbsp;soit&nbsp;remplie&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">59</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_support ace_function ace_C99 ace_c">printf</span><span class="ace_paren ace_lparen">(</span><span class="ace_string">"\nLE&nbsp;COMPTEUR&nbsp;A&nbsp;DÉPASSÉ&nbsp;20."</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span>&nbsp;</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">60</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_mutex_unlock</span><span class="ace_paren ace_lparen">(</span><span class="ace_keyword ace_operator">&amp;</span><span class="ace_identifier">mutex</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;On&nbsp;déverrouille&nbsp;le&nbsp;mutex&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">61</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_paren ace_rparen">}</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">62</span>&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">63</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_identifier">pthread_exit</span><span class="ace_paren ace_lparen">(</span><span class="ace_constant ace_language">NULL</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span>&nbsp;<span class="ace_comment">/*&nbsp;Fin&nbsp;du&nbsp;thread&nbsp;*/</span></div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on">64</span><span class="ace_paren ace_rparen">}</span></div></div></div></code><textarea wrap="off" class="code-block--raw-code"></textarea></pre><p id="r-1514544" data-claire-element-id="1535729">Résultat :</p><pre id="r-1514545" data-claire-element-id="1535730"><samp>lucas@lucas-Deskstop:~/Documents$&nbsp;./monprog&nbsp;
+
+4
+9
+18
+26
+LE&nbsp;COMPTEUR&nbsp;A&nbsp;DÉPASSÉ&nbsp;20.
+9
+18
+23
+LE&nbsp;COMPTEUR&nbsp;A&nbsp;DÉPASSÉ&nbsp;20.
+0
+3
+5
+9
+12
+19
+23
+LE&nbsp;COMPTEUR&nbsp;A&nbsp;DÉPASSÉ&nbsp;20.
+0
+8
+9
+10
+17
+25
+LE&nbsp;COMPTEUR&nbsp;A&nbsp;DÉPASSÉ&nbsp;20.
+2
+10
+10
+16
+25
+LE&nbsp;COMPTEUR&nbsp;A&nbsp;DÉPASSÉ&nbsp;20.
+8
+10
+18
+26
+LE&nbsp;COMPTEUR&nbsp;A&nbsp;DÉPASSÉ&nbsp;20.
+0
+7
+9
+^C</samp></pre><p id="r-1514546" data-claire-element-id="1535731">Terminons ce chapitre par quelques moyen mnémotechniques qui peuvent vous permettre de retenir toutes les notions que l'on a apprises :</p><ul id="r-1514563" data-claire-element-id="1535748"><li id="r-1514548" data-claire-element-id="1535733"><p id="r-1514547" data-claire-element-id="1535732">Vous pouvez remarquer que toutes les variables et les fonctions sur les threads commencent par <strong>pthread_</strong></p></li><li id="r-1514550" data-claire-element-id="1535735"><p id="r-1514549" data-claire-element-id="1535734">pthread_create : <em>create</em> = <em>créer</em> en anglais (donc <em>créer le thread)</em></p></li><li id="r-1514552" data-claire-element-id="1535737"><p id="r-1514551" data-claire-element-id="1535736">pthread_exit : <em>exit</em> = <em>sortir</em> (donc <em>sortir du thread</em>)</p></li><li id="r-1514554" data-claire-element-id="1535739"><p id="r-1514553" data-claire-element-id="1535738">pthread_join : <em>join</em> = <em>joindre</em> (donc<em> joindre le thread</em>)</p></li><li id="r-1514556" data-claire-element-id="1535741"><p id="r-1514555" data-claire-element-id="1535740">PTHREAD_MUTEX_INITIALIZER : <em>initializer</em> = <em>initialiser</em> (donc <em>initialiser le mutex</em>)</p></li><li id="r-1514558" data-claire-element-id="1535743"><p id="r-1514557" data-claire-element-id="1535742">pthread_mutex_lock : <em>lock</em> = <em>vérouiller</em> (donc <em>vérouiller le mutex</em>)</p></li><li id="r-1514560" data-claire-element-id="1535745"><p id="r-1514559" data-claire-element-id="1535744">pthread_mutex_unlock : <em>unlock</em> = <em>dévérouiller</em> (donc <em>dévérouiller le mutex</em>)</p></li><li id="r-1514562" data-claire-element-id="1535747"><p id="r-1514561" data-claire-element-id="1535746">pthread_cond_wait : <em>wait </em>= <em>attendre </em>(donc <em>attendre la condition</em>)</p></li></ul><p id="r-1514564" data-claire-element-id="1535749">(Comme quoi l'anglais ça sert des fois <img alt=":p" class="smilies" src="./Les threads_files/langue.png"> )</p></div></div>
+            </div>
+
+            <nav class="course-pagination  clearfix">
+                <a href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/executer-un-programme-1" class="oc-btn dark-btn course-pagination__btn course-pagination__btn--previous">
+                    <i class="icon-previous"></i>
+                    <span>Exécuter un programme</span>
+                </a>
+
+                                    <span class="course-pagination__separator"></span>
+
+                    <a href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-tubes" class="oc-btn dark-btn course-pagination__btn course-pagination__btn--next">
+                        <span>Les tubes</span>
+                        <i class="icon-next"></i>
+                    </a>
+                            </nav>
+
+            
+<div class="popin popin--illustrated" id="popin-view-restriction">
+    <i class="popin__close-button icon-close js-close-button"></i>
+
+    <div class="popin__inner">
+                    <div class="popin__illustrationWrapper">
+                <div class="popin__illustration illustration--balloon"></div>
+            </div>
+        
+        <div class="popin__mainContainer">
+                            <h3 class="popin__title">Waouh&nbsp;!</h3>
+            
+            
+            <div class="popin__content">
+                                        <p>
+            Très heureux de voir que nos cours vous plaisent, déjà dix pages lues aujourd'hui&nbsp;! Seuls les membres du site peuvent lire davantage de pages par jour.
+        </p>
+        <p>
+            Pour continuer la lecture de ce cours ou d'un autre, nous vous invitons à vous inscrire gratuitement sur le site. Vous pourrez ainsi échanger avec les autres membres et faire les exercices des cours.
+        </p>
+                </div>
+
+            <div class="popin__actions">
+                                                            <a class="oc-btn orange-alt-btn " href="http://openclassrooms.com/inscription/">S'inscrire</a>
+                                            <a class="oc-btn dark-btn " href="http://openclassrooms.com/login">Se connecter</a>
+                                                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <nav class="col3 col4-s col-nav col-nav--floating js-sidebar col-nav--closed sticky-stuck" data-widget="sticky" aria-disabled="false" style="left: auto; right: 204.5px; top: 30px; bottom: auto; position: fixed; display: block;">
+
+    <div id="course-sidebar-switch" class="col-nav__block--toggle" data-widget="classnameSwitcher">
+        <i class="icon-large icon-plus"></i>
+        <i class="icon-large icon-minus"></i>
+    </div>
+
+    <div id="tab-courseMenu" class="col-nav__inner js-sidebar-inner OC-scrollPanel-disabled" data-widget="scrollPanel" aria-disabled="true" style="height: auto;">
+
+        <div><div class="col-nav__block col-nav__block--summary">
+
+            <div class="side-paginate">
+                                    <a href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/executer-un-programme-1" class="side-paginate__previous">
+                        <i class="icon-previous"></i>
+                    </a>
+
+                    <span class="side-paginate__separator"></span>
+                
+                <h6 class="side-paginate__title">
+                    Les bases de la programmation système
+                </h6>
+
+                                    <span class="side-paginate__separator"></span>
+
+                    <a href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-tubes" class="side-paginate__next">
+                        <i class="icon-next"></i>
+                    </a>
+                            </div>
+
+                            <div class="col-nav__block--summary-list">
+                    <ol class="col-nav__chapters">
+                                                    <li class="">
+                                                                    <a href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/avant-propos-9">Avant-propos</a>
+                                                            </li>
+                                                    <li class="">
+                                                                    <a href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-processus-1">Les processus</a>
+                                                            </li>
+                                                    <li class="">
+                                                                    <a href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/executer-un-programme-1">Exécuter un programme</a>
+                                                            </li>
+                                                    <li class="selected">
+                                                                    <span>Les threads</span>
+                                                            </li>
+                                                    <li class="">
+                                                                    <a href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-tubes">Les tubes</a>
+                                                            </li>
+                                            </ol>
+                    <ul class="col-nav__exercices">
+                                            </ul>
+                </div>
+                    </div><div class="col-nav__block col-nav__block--institution">
+</div><div class="socialNetwork col-nav__block col-nav__block--social-network addthis_toolbox addthis_buttons addthis_share">
+    <a class="socialNetwork__network addthis_button_twitter" title="Tweet" href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-threads-3#">
+        <i class="icon-twitter"></i>
+    </a>
+
+    <a class="socialNetwork__network addthis_button_facebook" title="Découvrez le cours &quot;Les threads&quot; sur @OpenClassrooms" href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-threads-3#">
+
+        <i class="icon-facebook"></i>
+
+    </a>
+
+    <a class="socialNetwork__network addthis_button_google_plusone_share" title="Découvrez le cours &quot;Les threads&quot; sur @OpenClassrooms" href="http://www.addthis.com/bookmark.php?v=300&winname=addthis&pub=ra-4fbe47ef2aab77a6&source=tbx-300&lng=fr&s=google_plusone_share&url=http%3A%2F%2Fopenclassrooms.com%2Fcourses%2Fla-programmation-systeme-en-c-sous-unix%2Fles-threads-3&title=Les%20threads&ate=AT-ra-4fbe47ef2aab77a6/-/-/54a5949cd5de9438/2&frommenu=1&uid=54a5949c58f57998&ct=0&pre=https%3A%2F%2Fwww.google.be%2F&tt=0&captcha_provider=nucaptcha" target="_blank">
+
+        <i class="icon-google"></i>
+
+    </a>
+
+    <a class="socialNetwork__network addthis_button_email" title="Découvrez le cours &quot;Les threads&quot; sur @OpenClassrooms" target="_blank" href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-threads-3#">
+
+        <i class="icon-letter"></i>
+
+    </a>
+
+<div class="atclear"></div></div></div>
+
+        
+        
+
+        
+            
+
+    </div>
+</nav>
+    </section>
+</div>
+    </div>
+
+                        <footer class="alt-section">
+                <div class="centered">
+                    <div class="row">
+            <div class="col4 course-bottom__category">
+            <h2 class="highlighted">
+                L'auteur
+            </h2>
+            <div>
+                                <a itemprop="author" itemscope="" itemtype="http://schema.org/Person" href="http://openclassrooms.com/membres/lucas-84-88241" class="no-underlined">
+                    <div class="course-bottom__text-illustrated">
+                        <span data-author="Lucas Pesenti" style="background-image: url(http://sdz-upload.s3.amazonaws.com/prod/users/avatars/4fd74fac60ad49e1f9cce828567adab41.png);"></span>
+                        <h4 itemprop="name">Lucas Pesenti</h4>
+                                                    <p itemprop="description">
+                           J'apprécie le langage tout autant que l'abstraction qui s'en dégage et la machine virtuelle sous-jacente qui le compose.
+                        </p>
+                                            </div>
+                </a>
+                            </div>
+        </div>
+    
+            <div class="col8 course-bottom__category">
+            <h2 class="highlighted">Découvrez aussi ce cours en...</h2>
+
+            <ul class="course-bottom__format">
+                                    <li>
+                        <a href="http://openclassrooms.com/old-courses-pdf">
+                            <div class="circle circle--x-small">
+                                <span class="circle__content"></span>
+                                <i class="icon-pdf"></i>
+                                                            </div>
+                            <div class="course-bottom__format-entitled">PDF</div>
+                        </a>
+                    </li>
+                            </ul>
+        </div>
+    </div>
+                </div>
+                </footer>
+            </article>
+
+    
+        <div id="popin-certifying" class="popin" data-popin-title="Pour pouvoir obtenir votre certificat de réussite, &lt;a href=&quot;/premium&quot;&gt;&lt;i class=&#39;icon-star&#39;&gt;&lt;/i&gt; devenez Premium&lt;/a&gt; !">
+        <i class="popin__close-button icon-close js-close-button"></i>
+        <img alt="Exemple de certificat de réussite" src="./Les threads_files/certif.jpg">
+    </div>
+
+    <div id="popin-not-certifying-yet" class="popin" data-popin-title="Vous ne pouvez pas encore obtenir de certificat de réussite à l&#39;issue de ce cours.
+                            &lt;a href=&#39;/premium&#39;&gt;&lt;i class=&#39;icon-star&#39;&gt;&lt;/i&gt; Devenez Premium&lt;/a&gt;
+                    ">
+        <img alt="Exemple de certificat de réussite" src="./Les threads_files/certif.jpg">
+    </div>
+
+    
+
+                 
+    
+    <section class="advertise">
+
+        <h6 class="accessibility-hidden">Publicité</h6>
+
+        <div id="add-container-1350977194635-8">
+
+            
+            <!--
+                <div id="div-gpt-ad-1350977194635-8" class="megaban"></div>
+
+                                    <div id="div-gpt-ad-1350977284180-8" class="miniban"></div>
+                
+                <script type='text/javascript'>
+                    (function () {
+                        var mobileAdd = '1350977284180-8',
+                            add = '1350977194635-8';
+
+                        if (mobileAdd && window.innerWidth <= 728) {
+
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-' + mobileAdd);
+                            });
+
+                        } else {
+
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-' + add);
+                            });
+
+                        }
+                    })();
+                </script>
+            -->
+        </div>
+                <script type="text/javascript">
+            !document.getElementById('ayads-style')&&Array.prototype.slice.call(document.getElementById('add-container-1350977194635-8').childNodes).some(function(n){if(n.nodeType===8)document.write(n.nodeValue);});
+        </script>
+                <div id="div-gpt-ad-1350977194635-8" class="megaban"></div>
+
+                                    <div id="div-gpt-ad-1350977284180-8" class="miniban"></div>
+                
+                <script type="text/javascript">
+                    (function () {
+                        var mobileAdd = '1350977284180-8',
+                            add = '1350977194635-8';
+
+                        if (mobileAdd && window.innerWidth <= 728) {
+
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-' + mobileAdd);
+                            });
+
+                        } else {
+
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-' + add);
+                            });
+
+                        }
+                    })();
+                </script>
+            
+
+    </section>
+    <div class="centered">
+    <div class="outbrain-content">
+        <div class="OUTBRAIN" data-src="/courses/la-programmation-systeme-en-c-sous-unix" data-widget-id="AR_1" data-ob-template="siteduzero"></div>
+        <div class="OUTBRAIN" data-src="/courses/la-programmation-systeme-en-c-sous-unix" data-widget-id="AR_2" data-ob-template="siteduzero"></div>
+    </div>
+</div>
+<script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
+        </main>
+
+        
+
+                    <footer id="oc-footer" role="contentinfo">
+    <div class="centered">
+                            
+        <section class="footer-stats">
+    <h4>En ce moment sur OpenClassrooms</h4>
+    <div class="row">
+        <ul>
+            <li class="col3">
+                <span class="iconed-text small">
+                    <i class="icon-profil"></i>
+                                                                3 796 visiteurs en ligne
+                                    </span>
+            </li>
+
+            <li class="col3">
+                <span class="iconed-text small">
+                    <i class="icon-desktop"></i>
+                                                                Un visiteur sur cette page !
+                                    </span>
+            </li>
+
+            <li class="col6">
+                <span class="iconed-text small">
+                    <i class="icon-message"></i>
+                                                                8 027 048 messages sur le forum
+                                    </span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+
+        <section class="footer-connect">
+            <h4>Restez connecté à OpenClassrooms</h4>
+
+            <div class="row">
+                <div class="col2">
+                    <form action="http://openclassrooms.com/newsletter/inscription" method="post">
+                        <div class="input-group">
+                            <input name="Welcome[email]" type="email" title="E-mail" placeholder="E-mail">
+                            <span class="input-group-button">
+                                <button type="submit" class="oc-btn orange-btn">OK</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col2">
+                    <a href="http://www.facebook.com/openclassrooms" target="_blank" class="facebook-btn oc-btn nowrap">
+                        <i class="icon-large icon-facebook"></i> <span>Facebook</span>
+                    </a>
+                </div>
+
+                <div class="col2">
+                    <a href="https://twitter.com/openclassrooms" target="_blank" class="twitter-btn oc-btn nowrap">
+                        <i class="icon-large icon-twitter"></i> <span>Twitter</span>
+                    </a>
+                </div>
+
+                <div class="col2">
+                    <a href="https://www.youtube.com/user/TheOpenClassrooms" target="_blank" class="google-btn oc-btn nowrap">
+                        <i class="icon-large icon-youtube-play"></i> <span>Youtube</span>
+                    </a>
+                </div>
+
+                <div class="col2">
+                    <a href="https://plus.google.com/114947954177424605935/posts" target="_blank" class="google-btn oc-btn nowrap">
+                        <i class="icon-large icon-google"></i> <span>Google</span>
+                    </a>
+                </div>
+
+                <div class="col2">
+                    <a href="http://instagram.com/openclassrooms" target="_blank" class="instagram-btn oc-btn nowrap">
+                        <i class="icon-large icon-instagram"></i> <span>Instagram</span>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+        <section>
+            <h4 class="accessibility-hidden">Menu pied de page</h4>
+
+            <ul class="mainFooter">
+                <li><a href="http://openclassrooms.com/terms-conditions/fr">Conditions Générales d'Utilisation</a></li>
+                <li><a href="http://openclassrooms.com/p/roadmap">Roadmap</a></li>
+                <li><a href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-threads-3#">Nous recrutons</a></li>
+                <li><a href="http://openclassrooms.com/qui-sommes-nous">Qui sommes-nous&nbsp;?</a></li>
+                <li><a href="http://openclassrooms.com/publicite">Publicité</a></li>
+                <li><a href="http://www.simple-it.fr/blog/" target="_blank">Blog</a></li>
+                <li><a href="http://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-threads-3#" class="js-zendesk-show">Nous contacter</a></li>
+            </ul>
+        </section>
+
+    </div>
+
+</footer>
+        
+        <!-- loaded javascript block -->
+
+            
+            
+    <script type="text/javascript" src="./Les threads_files/main.js"></script>
+
+
+        
+
+            <script type="text/javascript" src="./Les threads_files/courseView.js"></script>
+    
+            <script type="text/javascript">
+    var addthis_share = addthis_share || {}
+
+    var addthis_config = {
+        "ui_email_from": 'hello@openclassrooms.com',
+        "ui_email_title": "Cours\x20\x22La\x20programmation\x20syst\u00E8me\x20en\x20C\x20sous\x20Unix\x22\x20sur\x20OpenClassrooms",
+        "ui_email_subject": "Cours\x20\x22La\x20programmation\x20syst\u00E8me\x20en\x20C\x20sous\x20Unix\x22\x20sur\x20OpenClassrooms",
+        'title': "D\u00E9couvrez\x20le\x20cours\x20\x22La\x20programmation\x20syst\u00E8me\x20en\x20C\x20sous\x20Unix\x22\x20sur\x20\x40OpenClassrooms",
+        "ui_email_note": "D\u00E9couvrez\x20le\x20cours\x20\x22La\x20programmation\x20syst\u00E8me\x20en\x20C\x20sous\x20Unix\x22\x20sur\x20OpenClassrooms.",
+        "data_track_addressbar": false,
+        "data_track_clickback" : false
+    };
+    addthis_share = {
+        passthrough : {
+            twitter: {
+                text: "D\u00E9couvrez\x20le\x20cours\x20\x22La\x20programmation\x20syst\u00E8me\x20en\x20C\x20sous\x20Unix\x22\x20sur\x20\x40OpenClassrooms"
+            }
+        }
+    }
+</script>
+<script type="text/javascript" src="./Les threads_files/addthis_widget.js"></script><div id="_atssh" style="visibility: hidden;"><iframe id="_atssh474" title="AddThis utility frame" height="1px" width="1px" style="border: 0px; left: 0px; top: 0px;" src="./Les threads_files/sh183.html"></iframe></div><script type="text/javascript" src="./Les threads_files/core176.js"></script>
+    
+
+        <!-- loaded javascript block -->
+
+                
+        <script type="text/javascript">
+    window.analytics=window.analytics||[],window.analytics.methods=["identify","group","track","page","pageview","alias","ready","on","once","off","trackLink","trackForm","trackClick","trackSubmit"],window.analytics.factory=function(t){return function(){var a=Array.prototype.slice.call(arguments);return a.unshift(t),window.analytics.push(a),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var key=window.analytics.methods[i];window.analytics[key]=window.analytics.factory(key)}window.analytics.load=function(t){if(!document.getElementById("analytics-js")){var a=document.createElement("script");a.type="text/javascript",a.id="analytics-js",a.async=!0,a.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.io/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n)}},window.analytics.SNIPPET_VERSION="2.0.9",
+    window.analytics.load('mou95e6tdn');
+    window.analytics.page();
+
+    
+</script>
+
+        <script>
+    function _eStat_Whap_loaded_func()
+    { eStatWhap.serial("800000000037"); eStatWhap.send(); }
+
+    (function()
+    { var myscript = document.createElement('script'); myscript.src = "http://w.estat.com/js/whap.js"; myscript.setAttribute('async', 'true'); var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(myscript, s); }
+            )();
+</script>
+
+            <script type="text/javascript" src="./Les threads_files/saved_resource"></script><img src="./Les threads_files/pixel.gif" width="0" height="0">
+
+        <!-- inlined javascript block -->
+
+        <script type="text/javascript">
+            
+            
+            if (App.modules) {
+                App.modules.startAll();
+            }
+        </script>
+
+                        
+    <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-5.newrelic.com","licenseKey":"61cf5b59c4","applicationID":"1775040","transactionName":"MQNXbUNYDURXBRJQCghJdkxCTQxaGQkFZgYKB1xLVGYAWEMUFVw6FgdHTW5JAkVCORBQABE=","queueTime":0,"applicationTime":304,"ttGuid":"","agentToken":"","atts":"HURUGwtCHko=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-476.min.js"}</script><iframe src="./Les threads_files/container.html" style="visibility: hidden; display: none;"></iframe>
+
+<script src="./Les threads_files/nr-476.min.js"></script><script type="text/javascript" src="./Les threads_files/61cf5b59c4"></script></body></html>

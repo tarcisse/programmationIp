@@ -17,7 +17,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#define PORT 23
+#define PORT 4000
 
 
 
@@ -32,10 +32,13 @@ int main(void)
 
     SOCKET sock;
     SOCKADDR_IN sin;
+    char buffer[32] = "tarcisse";
+    int sock_err;
 
+    /* Si les sockets Windows fonctionnent */
     if(!erreur)
     {
-        /* Création de la socket */
+        /* CrÃ©ation de la socket */
         sock = socket(AF_INET, SOCK_STREAM, 0);
 
         /* Configuration de la connexion */
@@ -43,19 +46,39 @@ int main(void)
         sin.sin_family = AF_INET;
         sin.sin_port = htons(PORT);
 
-        /* Si le client arrive à se connecter */
+        /* Si l'on a rÃ©ussi Ã  se connecter */
         if(connect(sock, (SOCKADDR*)&sin, sizeof(sin)) != SOCKET_ERROR)
-            printf("Connexion à %s sur le port %d\n", inet_ntoa(sin.sin_addr), htons(sin.sin_port));
-        else
-            printf("Impossible de se connecter\n");
+        {
+            printf("Connection Ã  %s sur le port %d\n", inet_ntoa(sin.sin_addr), htons(sin.sin_port));
 
-        /* On ferme la socket précédemment ouverte */
+            /////ajouter/////
+           sock_err=send(sock, buffer, 32, 0);
+             if(sock_err != SOCKET_ERROR)
+                    printf("Chaine envoyï¿½e : %s\n", buffer);
+                else
+                    printf("Erreur de transmission\n");
+
+            /* Si l'on reÃ§oit des informations : on les affiche Ã  l'Ã©cran */
+            if(recv(sock, buffer, 32, 0) != SOCKET_ERROR)
+                printf("Recu : %s\n", buffer);
+
+        }
+        /* sinon, on affiche "Impossible de se connecter" */
+        else
+        {
+            printf("Impossible de se connecter\n");
+        }
+
+        /* On ferme la socket */
         closesocket(sock);
 
         #if defined (WIN32)
             WSACleanup();
         #endif
     }
+
+    /* On attend que l'utilisateur tape sur une touche, puis on ferme */
+    getchar();
 
     return EXIT_SUCCESS;
 }

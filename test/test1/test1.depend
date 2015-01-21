@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1419299942 source:e:\projetprogrammationip\programmationip\test\test1\main.cpp
+1419540789 source:e:\projetprogrammationip\programmationip\test\test1\main.cpp
 	<winsock2.h>
 	<sys/types.h>
 	<sys/socket.h>
@@ -8,4 +8,5 @@
 	<unistd.h>
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 
