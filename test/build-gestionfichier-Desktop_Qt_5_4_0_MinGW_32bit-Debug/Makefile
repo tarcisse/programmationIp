@@ -176,6 +176,7 @@ Makefile: ../gestionfichier/gestionfichier.pro C:/Qt/5.4/mingw491_32/mkspecs/win
 		C:/Qt/5.4/mingw491_32/mkspecs/features/yacc.prf \
 		C:/Qt/5.4/mingw491_32/mkspecs/features/lex.prf \
 		../gestionfichier/gestionfichier.pro \
+		C:/Qt/5.4/mingw491_32/lib/Qt5Xml.prl \
 		C:/Qt/5.4/mingw491_32/lib/Qt5Core.prl
 	$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile ..\gestionfichier\gestionfichier.pro
 C:\Qt\5.4\mingw491_32\mkspecs\features\spec_pre.prf:
@@ -295,6 +296,7 @@ C:\Qt\5.4\mingw491_32\mkspecs\features\exceptions.prf:
 C:\Qt\5.4\mingw491_32\mkspecs\features\yacc.prf:
 C:\Qt\5.4\mingw491_32\mkspecs\features\lex.prf:
 ..\gestionfichier\gestionfichier.pro:
+C:/Qt/5.4/mingw491_32/lib/Qt5Xml.prl:
 C:/Qt/5.4/mingw491_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile ..\gestionfichier\gestionfichier.pro
